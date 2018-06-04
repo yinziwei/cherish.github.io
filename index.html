@@ -179,7 +179,10 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <p>###Javascript的性能优化：<br> 由于脚本会阻塞页面其他资源的下载，因此推荐将所有script标签尽可能放到body标签的底部，以尽量减少对整个页面下载的影响。<br>由于每个script标签初始下载时都会阻塞页面渲染，所以减少页面包含的script标签数量有助于改善这一情况。这不仅针对外链脚本，内嵌脚本的数量同样也要限制。浏览器在解析 HTML 页面的过程中每遇到一个script标签，都会因执行脚本而导致一定的延时，因此最小化延迟时间将会明显改善页面的总体性能。<br>无阻塞脚本的秘诀在于，在页面加载完成后才加载 JavaScript 代码。这就意味着在 window 对象的 onload事件触发后再下载脚本。有多种方式可以实现这一效果。<br>标签尽可能放到标签的底部，以尽量减少对整个页面下载的影响。 </p>
+<p>###总结<br>减少 JavaScript 对性能的影响有以下几种方法：<br>将所有的script标签放到页面底部，也就是body闭合标签之前，这能确保在脚本执行前页面已经完成了渲染。<br>尽可能地合并脚本。页面中的script标签越少，加载也就越快，响应也越迅速。无论是外链脚本还是内嵌脚本都是如此。<br>采用无阻塞下载 JavaScript 脚本的方法：<br>    使用script标签的 defer 属性<br>    使用动态创建的script元素来下载并执行代码；元素来下载并执行代码；<br>    使用 XHR 对象下载 JavaScript 代码并注入页面中。<br>通过以上策略，可以在很大程度上提高那些需要使用大量 JavaScript 的 Web 网站和应用的实际性能。$.fn.function用于添加单个方法<br>$.fn.extend 用于添加多个方法<br>jQuery.extend(object);为扩展jQuery类本身.为类添加新的方法。<br>jQuery.fn.extend(object);给jQuery对象添加方法。<br>$.fn.function用于添加单个方法<br>$.fn.extend 用于添加多个方法</p>
+<p>###localstorge的实例<br>Localstore<br>的用法实例<br><a href="http://www.zhangxinxu.com/study/201109/html5-localstorage-apply-show.html" target="_blank" rel="noopener">http://www.zhangxinxu.com/study/201109/html5-localstorage-apply-show.html</a></p>
+
       
 
       

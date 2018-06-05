@@ -159,6 +159,271 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-爱奇艺2018秋招" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/06/05/爱奇艺2018秋招/">爱奇艺2018秋招</a>
+    </h1>
+  
+
+        
+        <a href="/2018/06/05/爱奇艺2018秋招/" class="archive-article-date">
+  	<time datetime="2018-06-05T07:25:22.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-05</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="选择题"><a href="#选择题" class="headerlink" title="选择题"></a>选择题</h1><ol>
+<li>(-buffers/cache) used内存数：3G(指的第一部分Mem行中的used - buffers - cached)<br>(+buffers/cache) free内存数: 12G(指的第一部分Mem行中的free + buffers + cached)</li>
+</ol>
+<p>-buffers/cache反映的是被程序实实在在吃掉的内存；(也就是3G)<br>+buffers/cache反映的是可以挪用的内存总数；(就是12G)</p>
+<p>2.代码输出的结果</p>
+<pre><code>var a = 1;
+function f(){
+var a = 2;
+var e = eval;
+e(&apos;console.log(a)&apos;);
+  }
+f();//1
+</code></pre><p>解析：<br>如果你间接的使用 eval(), 如通过一个引用来调用它而不是直接的调用eval。 从ECMAScript 5起它工作在全局作用域而不是局部作用域中<br>如果你把eval赋值给e，相当于把window.eval赋值给e，这时e是全局作用域上的，执行的时候回去寻找全局域上的a，所以是1，如果你不复制，直接使用eval(‘console.log(a)’),它默认是在本地函数作用域进行，所以是2</p>
+<p>3.算法的稳定性不是体现在时间复杂度上，而是体现在排序前后两个相同数字的位置有没有变化</p>
+<p>###编程题</p>
+<p>1.牛牛有一些排成一行的正方形。每个正方形已经被染成红色或者绿色。牛牛现在可以选择任意一个正方形然后用这两种颜色的任意一种进行染色,这个正方形的颜色将会被覆盖。牛牛的目标是在完成染色之后,每个红色R都比每个绿色G距离最左侧近。牛牛想知道他最少需要涂染几个正方形。<br>如样例所示: s = RGRGR<br>我们涂染之后变成RRRGG满足要求了,涂染的个数为2,没有比这个更好的涂染方案</p>
+<pre><code>console.log(&quot;最少需涂染&quot;+color(&apos;RGRGR&apos;))
+function color(str){
+    var num=0;
+    var arr=str.split(&quot;&quot;);
+    var Green=[];
+    var Red=[];
+
+    for(let i=0;i&lt;arr.length;i++){
+        if(arr[i]==&quot;G&quot;){
+            Green.push(i);
+        }else{
+            Red.push(i);
+        }
+    }
+    var Gmax=Green[Green.length-1];
+    var Gmin=Green[0];
+    var Rmax=Red[Red.length-1];
+    if(Rmax&lt;Gmin){
+        return num;
+    }else {
+        for (let j = 0; j &lt; Gmax; j++) {
+            if (arr[j] == &quot;G&quot;) {
+                num += 1;
+                arr[j] = &quot;R&quot;;
+            }
+        }
+        for (let k = Gmax; k &lt; arr.length; k++) {
+            if (arr[k] == &quot;R&quot;) {
+                num += 1;
+                arr[k] = &quot;G&quot;;
+            }
+        }
+        console.log(arr);
+        return num;
+    }
+}
+</code></pre><p>2.对于任意两个正整数x和k,我们定义repeat(x, k)为将x重复写k次形成的数,例如repeat(1234, 3) = 123412341234,repeat(20,2) = 2020.<br>牛牛现在给出4个整数x1, k1, x2, k2, 其中v1 = (x1, k1), v2 = (x2, k2),请你来比较v1和v2的大小–&gt;</p>
+<pre><code> let ans=(line)=&gt;{
+    let lines=line.split(&quot;&quot;)
+    let x1=lines[0],k1=parseInt(lines[1]),x2=lines[2],k2=parseInt(lines[3])
+    for(let i=0;i&lt;k1;i++){
+        x1_all+=x1
+
+    }
+    for(let i=0;i&lt;k2;i++){
+        x2_all+=x2
+    }
+    let x1_arr=x1_all.split(&quot;&quot;),
+        x2_arr=x2_all.split(&quot;&quot;)
+    if(x1_arr.length&gt;x2_arr.length){
+        return &quot;Greater&quot;
+    }else if(x1_arr.length&lt;x2_arr.length){
+        return &quot;Less&quot;
+    }else{
+        for(let i=0;i&lt;x1_arr.length;i++){
+            if(parseInt(x1_arr[i])&gt;parseInt(x2_arr[i])){
+                return &quot;Greater&quot;
+            }else if(parseInt(x1_arr[i])&lt;parseInt(x2_arr[i])){
+                return &quot;Less&quot;
+            }
+        }
+        return &apos;Equal&apos;
+    }
+}
+console.log(ans(&apos;1010 3 101010 2&apos;))
+</code></pre><p>3.牛牛手中有三根木棍,长度分别是a,b,c。牛牛可以把任一一根木棍长度削短,牛牛的目标是让这三根木棍构成一个三角形,并且牛牛还希望这个三角形的周长越大越好。</p>
+<p>输入描述:<br>输入包括一行,一行中有正整数a, b, c(1 ≤ a, b, c ≤ 100), 以空格分割</p>
+<p>输出描述:<br>输出一个整数,表示能拼凑出的周长最大的三角形。</p>
+<p>输入例子1:<br>1 2 3</p>
+<p>输出例子1:<br>5</p>
+<pre><code> let ans=(line)=&gt; {
+    let ret = 0
+    let lines = line.split(&quot;&quot;)
+    let a = parseInt(line[0]), b = parseInt(line[1]), c = parseInt(line[2])
+    let a1 = a, b1 = b, c1 = c
+    if (a + b &gt; c &amp;&amp; a + c &gt; b &amp;&amp; b + c &gt; a) {
+        ret = a + b + c
+    }
+    while (a1) {
+        if (a1 + b &gt; c &amp;&amp; a1 + c &gt; b &amp;&amp; b + c &gt; a1) {
+            if (a1 + b + c &gt; ret) {
+                ret = a1 + b + c
+
+            }
+            break
+        } else {
+            a1--
+        }
+
+    }
+    while (b1) {
+        if (a + b1 &gt; c &amp;&amp; a + c &gt; b &amp;&amp; b1 + c &gt; a) {
+            if (a + b1 + c &gt; ret) {
+                ret = a + b1 + c
+
+            }
+            break
+        } else {
+            b1--
+        }
+
+    }
+    while (c1) {
+        if (a + b &gt; c1 &amp;&amp; a + c1 &gt; b &amp;&amp; b + c1 &gt; a) {
+            if (a + b + c1 &gt; ret) {
+                ret = a + b + c1
+
+            }
+            break
+        } else {
+            c1--
+        }
+
+    }
+}
+console.log(ans(&apos;1 2 3&apos;))
+</code></pre>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/06/05/爱奇艺2018秋招/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-第五章歌手页面开发" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/06/05/第五章歌手页面开发/">第五章歌手页面开发</a>
+    </h1>
+  
+
+        
+        <a href="/2018/06/05/第五章歌手页面开发/" class="archive-article-date">
+  	<time datetime="2018-06-05T02:08:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-05</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ol>
+<li>写代码抓取数据</li>
+<li>将混乱的数据进行聚合，比如说全部的都是姓都是以X开头的放在一起，姓氏以Y开头的在一起</li>
+<li>数据处理好后将数据应用在组件中</li>
+<li>建立右边栏的快速入口和中间的标题</li>
+<li>左右联动的效果</li>
+<li>fix title的功能的实现（滚动固定标题实现）</li>
+<li>优化，loading的效果</li>
+</ol>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/06/05/第五章歌手页面开发/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-js的优化和web-worker和cookies的区别" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     

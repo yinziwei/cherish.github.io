@@ -159,6 +159,91 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-安装devtools中出现的种种问题" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/06/06/安装devtools中出现的种种问题/">安装devtools中出现的种种问题</a>
+    </h1>
+  
+
+        
+        <a href="/2018/06/06/安装devtools中出现的种种问题/" class="archive-article-date">
+  	<time datetime="2018-06-06T15:27:54.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-06</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ol>
+<li><p>在官网中下载devtools，然后利用</p>
+<pre><code>npm install//下载相关包
+</code></pre><p>在这一步中我折腾了好久，总是出现很奇葩的问题网上搜了很多，但是没有解决，所以我直接简单粗暴的将devtools删除了，然后重新装，还是有问题，最后找到了解决办法，用淘宝镜像cpnm，才将包都下载成功<br>2.npm run build<br>这一步中，出现问题<br>npm run build项目出错：</p>
+<pre><code>npm ERR! code ELIFECYCLE errno 2
+</code></pre></li>
+</ol>
+<p>最终在网上搜的解决是 node_module包没有下好，所以有用了</p>
+<pre><code> rm -rf node_modules
+   rm package-lock.json
+npm cache clear --force//这个报告说没有这个命令，可忽略
+npm install
+</code></pre><p>然后在本地目录下看到node_module这个包已经清楚干净了，最后重新来一遍</p>
+<pre><code>cnpm install//国内一般用淘宝镜像比较保险
+</code></pre><p>这一遍终于成功了<br>然后继续cnpm run build,也顺利安装成功</p>
+<p>3。按照网上的教程，将下载好的<br>    <a href="https://www.jianshu.com/p/01a61c8c722f" target="_blank" rel="noopener">devtools安装和使用</a> 手册后<br>成功将插件安在了谷歌浏览器下，这时又出现了一个恼火的问题<br>4.由于我对于devtool的不理解，我以为只要安装了这个插件，不管有没有vue项目运行，这个插件都会高亮的出现在谷歌浏览器的右上角上，所以当右上角在我的百度页面上灰暗的时候，我觉得我没有安装成功，所以一直调试，搜了很多资料后发现，当我们运行的项目中有vue文件，右上角的vue图标次啊会高亮，否者，一直是灰暗的，这个归结于我对于devtools的不理解，才造成的，请大家谨慎。<br>5.后面又出现了两个问题<br>  a.点击图标时提示Vue.js not detected<br>解决方法：</p>
+<p>（1）你的页面没有导入vue.js文件，或者不是vue应用。就是我上面说的问题第4点<br> b.提示：Vue.js is detected on this page. Devtools inspection is not available because it’s in production mode or explicitly disabled by the author.</p>
+<p>解决方法：</p>
+<p>（1）检查自己是否使用压缩后的js，vue.min.js，使用压缩后的js文件，会失去错误提示和警告。也可能会导致上面的问题。</p>
+<p>（2）尝试安装方法中的第5步中的配置。</p>
+<p> 具体请参考<a href="https://www.jianshu.com/p/01a61c8c722f" target="_blank" rel="noopener">devtools安装和使用</a></p>
+<p>####总结<br>   在安装，使用的过程中，我虽然出现了好多问题，但是觉得自己坚持下来的，还是挺高兴的，<br>   优点：坚持下来了<br>   缺点：效率太低了，思维不够敏捷，还需要加强。</p>
+<p>##万事胜意哦！！！！！！！！</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/06/06/安装devtools中出现的种种问题/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-爱奇艺校招第二场前端笔试" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1164,77 +1249,10 @@ bookMovieForUser(
 
 
   
-    <article id="post-hello-world" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/04/22/hello-world/">Hello World</a>
-    </h1>
-  
-
-        
-        <a href="/2018/04/22/hello-world/" class="archive-article-date">
-  	<time datetime="2018-04-22T09:00:59.624Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-22</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/04/22/hello-world/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
+    <nav id="page-nav">
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+    </nav>
   
 
 

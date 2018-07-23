@@ -159,6 +159,351 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-百度前端第三场" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/07/23/百度前端第三场/">百度前端第三场</a>
+    </h1>
+  
+
+        
+        <a href="/2018/07/23/百度前端第三场/" class="archive-article-date">
+  	<time datetime="2018-07-23T11:51:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-23</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="选择题"><a href="#选择题" class="headerlink" title="选择题"></a>选择题</h1><p> 1.设散列表长度为m，散列函数为H（key）=key%p，为了减少发生冲突的可能性，p应取（　　）</p>
+<p>p为小于等于m的最大素数</p>
+<ol start="2">
+<li><pre><code>var foo = 1;
+function baidu(){
+console.log(foo);
+    var foo = 2;
+console.log(foo);
+}
+baidu();
+</code></pre><p>只有声明的变量会提升，初始化的值却不会。<br>相当于：</p>
+<pre><code>function baidu(){
+     var foo;  //提升到函数最顶部
+ console.log(foo);  //输出未定义
+ foo =2; 
+ console.log(foo); //输出2
+}    
+</code></pre></li>
+</ol>
+<p>3.关于Linux命令作用、</p>
+<p>.tar.gz和.gz文件是两种不同的文件，需要区别对待，解压命令当然也不同。</p>
+<ol>
+<li>.tar.gz文件，这种文件是tar文件的压缩文件，可以使用tar命令进行解压。</li>
+<li>单纯的.gz文件解压，这种文件不可以使用tar命令解压，需要用gunzip解压，使用命令gzip或使用zcat命令。</li>
+<li>cat /proc/meminfo 可以查看物理内存的大小</li>
+<li>awk 可以对文本和数据处理分析</li>
+<li>ps -ef 可以显示所有进程</li>
+</ol>
+<p>4.在Linux系统下，有一个文件为”baidu.txt”，如果想为这个文件的所有者赋予可读和可执行权限,应该用下面那个命令?</p>
+<p><a href="https://blog.csdn.net/ld513508088/article/details/8362506" target="_blank" rel="noopener">https://blog.csdn.net/ld513508088/article/details/8362506</a></p>
+<p>5.如何使页面整体document处于可编辑状态？<br>使用 js 控制 designMode 属性，并设置为 on</p>
+<p>6.css 如何使用服务端的字体：<br> @font-face<br>7.在Node.js中，直接运行以下哪个语句会抛出异常？<br>浏览器的全局是window，而node.js的全局是global</p>
+<p>HTTPS和HTTP的区别主要如下：<br>1、https协议需要到ca申请证书，一般免费证书较少，因而需要一定费用。<br>2、http是超文本传输协议，信息是明文传输，https则是具有安全性的ssl加密传输协议。<br>3、http和https使用的是完全不同的连接方式，用的端口也不一样，前者是80，后者是443。<br>4、http的连接很简单，是无状态的；HTTPS协议是由SSL+HTTP协议构建的可进行加密传输、身份认证的网络协议，比http协议安全，SSL协议是通过非对称密钥机制保证双方身份认证，并完成建立连接，在实际数据通信时通过对称密钥机制保障数据安全性</p>
+<h1 id="解答题"><a href="#解答题" class="headerlink" title="解答题"></a>解答题</h1><p>dom 的操作，常用的有哪些，如何创建、添加、移除、移动、复制、查找节点？<br>创建：</p>
+<pre><code>createDocumentFragment()    //创建一个DOM片段
+  createElement()   //创建一个具体的元素
+  createTextNode()   //创建一个文本节点
+</code></pre><p>添加：</p>
+<pre><code>appendChild()
+</code></pre><p>移出：</p>
+<pre><code>removeChild()
+</code></pre><p>替换：</p>
+<pre><code>replaceChild()
+</code></pre><p>插入：</p>
+<pre><code>insertBefore()
+</code></pre><p>复制：</p>
+<pre><code>cloneNode(true)
+</code></pre><p>查找：</p>
+<pre><code>getElementsByTagName()    //通过标签名称
+ getElementsByClassName()    //通过标签名称
+ getElementsByName()    //通过元素的Name属性的值
+ getElementById()    //通过元素Id，唯一性
+</code></pre><h1 id="编程题"><a href="#编程题" class="headerlink" title="编程题"></a>编程题</h1><!--
+对于字符串x和y, 如果擦除x中的某些字母(有可能全擦掉或者都不擦)能够得到y,我们就称y是x的子序列。例如."ncd"是"nowcoder"的子序列,而"xt"不是。
+现在对于给定的一个字符串s,请计算出字典序最大的s的子序列。-->
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;UTF-8&quot;&gt;
+&lt;title&gt;Title&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;script&gt;
+
+function MaxStr(s){
+    var len=s.length,res=[s[len-1]]
+    for(let i=len-2;i&gt;=0;i--){
+        if(s[i]&gt;=res[0]){
+            res.unshift(s[i])
+        }
+    }
+    return res.join(&apos;&apos;)
+
+}
+console.log(MaxStr(&quot;test&quot;))
+&lt;/script&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+</code></pre><!--分页组件是web开发中常见的组件，请完成pagination函数，在id为jsPagination的DOM元素中完成分页的显示部分，需求如下
+1、最多连续显示5页，居中高亮显示current页（如demo1所示)
+2、total为0时，隐藏整个元素（如demo2所示）
+3、如果total<=5，则显示全部页数，隐藏“首页”和“末页”元素（如demo3所示）
+4、当current居中不足5页，向后(前)补足5页，隐藏“首页”(“末页”)元素(如demo4和demo5所示)
+5、total、current均为正整数，1 <= current <= total-->
+<pre><code>  &lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;UTF-8&quot;&gt;
+&lt;title&gt;Title&lt;/title&gt;
+&lt;style&gt;
+    .hide{
+        display: none!important;
+    }
+    .pagination{
+        margin: 0 auto;
+        padding: 0;
+        list-style: none;
+        text-align: center;
+    }
+    .pagination li{
+        display: inline-block;
+        width: 30px;
+        height: 30px;
+        overflow: hidden;
+        line-height: 30px;
+        margin: 0 5px 0 0;
+        font-size: 14px;
+        text-align: center;
+        border: 1px solid #00bc9b;
+        color: #00bc9b;
+        cursor: pointer;
+    }
+    .pagination li.current,
+    .pagination li:hover{
+        background: #00bc9b;
+        color: #ffffff;
+    }
+    .demo {
+        margin: 10px 0;
+        padding: 10px;
+        background: #eeeeee;
+        text-align: center;
+    }
+&lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;ul class=&quot;pagination&quot; id=&quot;jsPagination&quot;&gt;
+&lt;li&gt;首页&lt;/li&gt;
+&lt;li&gt;&lt;/li&gt;
+&lt;li&gt;&lt;/li&gt;
+&lt;li&gt;&lt;/li&gt;
+&lt;li&gt;&lt;/li&gt;
+&lt;li&gt;&lt;/li&gt;
+&lt;li&gt;末页&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;demo&quot;&gt;
+&lt;div&gt;(Demo1) total: 10，current: 4&lt;/div&gt;
+&lt;ul class=&quot;pagination&quot;&gt;
+    &lt;li&gt;首页&lt;/li&gt;
+    &lt;li&gt;2&lt;/li&gt;
+    &lt;li&gt;3&lt;/li&gt;
+    &lt;li class=&quot;current&quot;&gt;4&lt;/li&gt;
+    &lt;li&gt;5&lt;/li&gt;
+    &lt;li&gt;6&lt;/li&gt;
+    &lt;li&gt;末页&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;demo&quot;&gt;
+&lt;div&gt;(Demo2) total: 0，current: 0&lt;/div&gt;
+&lt;ul class=&quot;pagination hide&quot;&gt;
+    &lt;li&gt;首页&lt;/li&gt;
+    &lt;li&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;/li&gt;
+    &lt;li&gt;末页&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;demo&quot;&gt;
+&lt;div&gt;(Demo3) total: 3，current: 2&lt;/div&gt;
+&lt;ul class=&quot;pagination&quot;&gt;
+    &lt;li class=&quot;hide&quot;&gt;首页&lt;/li&gt;
+    &lt;li&gt;1&lt;/li&gt;
+    &lt;li class=&quot;current&quot;&gt;2&lt;/li&gt;
+    &lt;li&gt;3&lt;/li&gt;
+    &lt;li class=&quot;hide&quot;&gt;&lt;/li&gt;
+    &lt;li class=&quot;hide&quot;&gt;&lt;/li&gt;
+    &lt;li class=&quot;hide&quot;&gt;末页&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;demo&quot;&gt;
+&lt;div&gt;(Demo4) total: 10，current: 2&lt;/div&gt;
+&lt;ul class=&quot;pagination&quot;&gt;
+    &lt;li class=&quot;hide&quot;&gt;首页&lt;/li&gt;
+    &lt;li&gt;1&lt;/li&gt;
+    &lt;li class=&quot;current&quot;&gt;2&lt;/li&gt;
+    &lt;li&gt;3&lt;/li&gt;
+    &lt;li&gt;4&lt;/li&gt;
+    &lt;li&gt;5&lt;/li&gt;
+    &lt;li&gt;末页&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;demo&quot;&gt;
+&lt;div&gt;(Demo5) total: 10，current: 9&lt;/div&gt;
+&lt;ul class=&quot;pagination&quot;&gt;
+    &lt;li&gt;首页&lt;/li&gt;
+    &lt;li&gt;6&lt;/li&gt;
+    &lt;li&gt;7&lt;/li&gt;
+    &lt;li&gt;8&lt;/li&gt;
+    &lt;li class=&quot;current&quot;&gt;9&lt;/li&gt;
+    &lt;li&gt;10&lt;/li&gt;
+    &lt;li class=&quot;hide&quot;&gt;末页&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;script&gt;
+function pagination(total, current) {
+
+
+    var ele=document.getElementById(&apos;jsPagination&apos;);
+    //for demo1
+    if(current-2&gt;=1&amp;&amp;current+2&lt;=total)
+    {
+        var page=ele.firstChild.nextSibling;
+        if(current-2==1)
+            page.className=&apos;hide&apos;;
+        for(var i=current-2,p=current-2;i&lt;=current+2;p++,i++)
+        {
+            page=page.nextSibling;
+            page=page.nextSibling;
+            page.innerHTML=i;
+            if(i==current)
+                page.className=&apos;current&apos;;
+        }
+        if(current+2==total)
+        {
+            var last=page.nextSibling.nextSibling;
+            last.className=&apos;hide&apos;;
+        }
+    }
+    //for demo2
+    else if(total==0)
+    {
+        ele.className=&apos;pagination hide&apos;;
+    }
+    //for demo3
+    else if(total&lt;=5)
+    {
+        var fir=ele.firstChild.nextSibling;
+        fir.className=&apos;hide&apos;;
+        var page=fir;
+        for(var i=1;i&lt;=5;i++) {
+            page = page.nextSibling.nextSibling;
+            if (i &lt;= total) {
+                page.innerHTML=i;
+                if(i==current)
+                    page.className=&apos;current&apos;;
+            }
+            else
+            {
+                page.className=&apos;hide&apos;;
+            }
+
+        }
+        var last=page.nextSibling.nextSibling;
+        last.className=&apos;hide&apos;;
+    }
+    //for demo4
+    else if(current-2&lt;=0)
+    {
+        var page=ele.firstChild.nextSibling;
+        page.className=&apos;hide&apos;;
+        for(var i=1;i&lt;=5;i++) {
+            page = page.nextSibling.nextSibling;
+            page.innerHTML=i;
+            if(i==current)
+                page.className=&apos;current&apos;;
+        }
+
+    }
+    //for demo5
+    else if(current+2&gt;total)
+    {
+        var page=ele.firstChild.nextSibling;
+        for(var i=total-4;i&lt;=total;i++) {
+            page = page.nextSibling.nextSibling;
+            page.innerHTML=i;
+            if(i==current)
+                page.className=&apos;current&apos;;
+        }
+        var last=page.nextSibling.nextSibling;
+        last.className=&apos;hide&apos;;
+
+    }
+}
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/07/23/百度前端第三场/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-百度前端第二次笔试题" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1121,200 +1466,6 @@ function num(arr) {
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2018/06/06/爱奇艺校招第二场前端笔试/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-爱奇艺2018秋招" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/06/05/爱奇艺2018秋招/">爱奇艺2018秋招</a>
-    </h1>
-  
-
-        
-        <a href="/2018/06/05/爱奇艺2018秋招/" class="archive-article-date">
-  	<time datetime="2018-06-05T07:25:22.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-05</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="选择题"><a href="#选择题" class="headerlink" title="选择题"></a>选择题</h1><ol>
-<li>(-buffers/cache) used内存数：3G(指的第一部分Mem行中的used - buffers - cached)<br>(+buffers/cache) free内存数: 12G(指的第一部分Mem行中的free + buffers + cached)</li>
-</ol>
-<p>-buffers/cache反映的是被程序实实在在吃掉的内存；(也就是3G)<br>+buffers/cache反映的是可以挪用的内存总数；(就是12G)</p>
-<p>2.代码输出的结果</p>
-<pre><code>var a = 1;
-function f(){
-var a = 2;
-var e = eval;
-e(&apos;console.log(a)&apos;);
-  }
-f();//1
-</code></pre><p>解析：<br>如果你间接的使用 eval(), 如通过一个引用来调用它而不是直接的调用eval。 从ECMAScript 5起它工作在全局作用域而不是局部作用域中<br>如果你把eval赋值给e，相当于把window.eval赋值给e，这时e是全局作用域上的，执行的时候回去寻找全局域上的a，所以是1，如果你不复制，直接使用eval(‘console.log(a)’),它默认是在本地函数作用域进行，所以是2</p>
-<p>3.算法的稳定性不是体现在时间复杂度上，而是体现在排序前后两个相同数字的位置有没有变化</p>
-<p>###编程题</p>
-<p>1.牛牛有一些排成一行的正方形。每个正方形已经被染成红色或者绿色。牛牛现在可以选择任意一个正方形然后用这两种颜色的任意一种进行染色,这个正方形的颜色将会被覆盖。牛牛的目标是在完成染色之后,每个红色R都比每个绿色G距离最左侧近。牛牛想知道他最少需要涂染几个正方形。<br>如样例所示: s = RGRGR<br>我们涂染之后变成RRRGG满足要求了,涂染的个数为2,没有比这个更好的涂染方案</p>
-<pre><code>console.log(&quot;最少需涂染&quot;+color(&apos;RGRGR&apos;))
-function color(str){
-    var num=0;
-    var arr=str.split(&quot;&quot;);
-    var Green=[];
-    var Red=[];
-
-    for(let i=0;i&lt;arr.length;i++){
-        if(arr[i]==&quot;G&quot;){
-            Green.push(i);
-        }else{
-            Red.push(i);
-        }
-    }
-    var Gmax=Green[Green.length-1];
-    var Gmin=Green[0];
-    var Rmax=Red[Red.length-1];
-    if(Rmax&lt;Gmin){
-        return num;
-    }else {
-        for (let j = 0; j &lt; Gmax; j++) {
-            if (arr[j] == &quot;G&quot;) {
-                num += 1;
-                arr[j] = &quot;R&quot;;
-            }
-        }
-        for (let k = Gmax; k &lt; arr.length; k++) {
-            if (arr[k] == &quot;R&quot;) {
-                num += 1;
-                arr[k] = &quot;G&quot;;
-            }
-        }
-        console.log(arr);
-        return num;
-    }
-}
-</code></pre><p>2.对于任意两个正整数x和k,我们定义repeat(x, k)为将x重复写k次形成的数,例如repeat(1234, 3) = 123412341234,repeat(20,2) = 2020.<br>牛牛现在给出4个整数x1, k1, x2, k2, 其中v1 = (x1, k1), v2 = (x2, k2),请你来比较v1和v2的大小–&gt;</p>
-<pre><code> let ans=(line)=&gt;{
-    let lines=line.split(&quot;&quot;)
-    let x1=lines[0],k1=parseInt(lines[1]),x2=lines[2],k2=parseInt(lines[3])
-    for(let i=0;i&lt;k1;i++){
-        x1_all+=x1
-
-    }
-    for(let i=0;i&lt;k2;i++){
-        x2_all+=x2
-    }
-    let x1_arr=x1_all.split(&quot;&quot;),
-        x2_arr=x2_all.split(&quot;&quot;)
-    if(x1_arr.length&gt;x2_arr.length){
-        return &quot;Greater&quot;
-    }else if(x1_arr.length&lt;x2_arr.length){
-        return &quot;Less&quot;
-    }else{
-        for(let i=0;i&lt;x1_arr.length;i++){
-            if(parseInt(x1_arr[i])&gt;parseInt(x2_arr[i])){
-                return &quot;Greater&quot;
-            }else if(parseInt(x1_arr[i])&lt;parseInt(x2_arr[i])){
-                return &quot;Less&quot;
-            }
-        }
-        return &apos;Equal&apos;
-    }
-}
-console.log(ans(&apos;1010 3 101010 2&apos;))
-</code></pre><p>3.牛牛手中有三根木棍,长度分别是a,b,c。牛牛可以把任一一根木棍长度削短,牛牛的目标是让这三根木棍构成一个三角形,并且牛牛还希望这个三角形的周长越大越好。</p>
-<p>输入描述:<br>输入包括一行,一行中有正整数a, b, c(1 ≤ a, b, c ≤ 100), 以空格分割</p>
-<p>输出描述:<br>输出一个整数,表示能拼凑出的周长最大的三角形。</p>
-<p>输入例子1:<br>1 2 3</p>
-<p>输出例子1:<br>5</p>
-<pre><code> let ans=(line)=&gt; {
-    let ret = 0
-    let lines = line.split(&quot;&quot;)
-    let a = parseInt(line[0]), b = parseInt(line[1]), c = parseInt(line[2])
-    let a1 = a, b1 = b, c1 = c
-    if (a + b &gt; c &amp;&amp; a + c &gt; b &amp;&amp; b + c &gt; a) {
-        ret = a + b + c
-    }
-    while (a1) {
-        if (a1 + b &gt; c &amp;&amp; a1 + c &gt; b &amp;&amp; b + c &gt; a1) {
-            if (a1 + b + c &gt; ret) {
-                ret = a1 + b + c
-
-            }
-            break
-        } else {
-            a1--
-        }
-
-    }
-    while (b1) {
-        if (a + b1 &gt; c &amp;&amp; a + c &gt; b &amp;&amp; b1 + c &gt; a) {
-            if (a + b1 + c &gt; ret) {
-                ret = a + b1 + c
-
-            }
-            break
-        } else {
-            b1--
-        }
-
-    }
-    while (c1) {
-        if (a + b &gt; c1 &amp;&amp; a + c1 &gt; b &amp;&amp; b + c1 &gt; a) {
-            if (a + b + c1 &gt; ret) {
-                ret = a + b + c1
-
-            }
-            break
-        } else {
-            c1--
-        }
-
-    }
-}
-console.log(ans(&apos;1 2 3&apos;))
-</code></pre>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/06/05/爱奇艺2018秋招/">展开全文 >></a>
         </p>
       
 

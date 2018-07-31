@@ -159,6 +159,101 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-观看FungLeo-s-Blog有感" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/07/31/观看FungLeo-s-Blog有感/">观看FungLeo&#39;s Blog有感</a>
+    </h1>
+  
+
+        
+        <a href="/2018/07/31/观看FungLeo-s-Blog有感/" class="archive-article-date">
+  	<time datetime="2018-07-31T01:47:29.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-31</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>##共勉<br>转载自：[<a href="https://blog.csdn.net/fungleo/article/details/51378593]" target="_blank" rel="noopener">https://blog.csdn.net/fungleo/article/details/51378593]</a> </p>
+<ol>
+<li>命名一定要规范,不要尝试使用别人看不懂的命名.有时候,好的命名胜过一切.</li>
+</ol>
+<ol>
+<li>如果逻辑很复杂,尝试把复杂的逻辑拆解成一个一个的小逻辑,这样能够更加好的解决问题和排查问题.</li>
+</ol>
+<ol>
+<li>先用最笨的方法把效果实现了,然后再考虑优化代码.一开始就考虑太多,会发现问题很难解决,尤其是像我这样的初学者.</li>
+</ol>
+<ol>
+<li>一定要写注释!!!!</li>
+</ol>
+<ol>
+<li>耐心,遇到问题冷静,好好想一想.</li>
+</ol>
+<ol>
+<li>除非是很难,并且结果非常确定,并且搜索引擎解决不了.否则不要去群里问人.</li>
+</ol>
+<ol>
+<li>在群里讨论概念完全是浪费时间，问搜索引擎</li>
+</ol>
+<p>js技巧</p>
+<p>###用感叹号将非布尔值转换为布尔值<br>    var str = “abc”;<br>    console.log(!str);</p>
+<p>###双波浪号的妙用（将内容转化为数字，或者小数取整）<br>    var str = “123.123”;<br>    console.log(~~str);</p>
+<p>###解决jquery ajax调用远程接口的跨域问题<br>        $.ajax({<br>        type:’get’,<br>        url:url,<br>        // 下面的两行代码,就是解决跨域的关键<br>        xhrFields: {withCredentials: true},<br>        crossDomain: true,<br>        // 就是上面的两行代码<br>        success: function(data){<br>        // do something<br>        },<br>        error: function(data){<br>        // do something<br>        }<br>        });</p>
+<p>###利用jquery 创建 json 数据<br>第一步,创建一个对象.<br>第二部,往对象里面写值.<br>第三步,将对象转化为json数据.</p>
+<pre><code>var obj = {};
+JSON.stringify(obj);
+</code></pre><p>###数字保留小数点后N位</p>
+<pre><code>var num = 10 / 3;
+~~(num*10000)/10000;
+</code></pre><p>###字符串截取<br>    var str = “abcdefg”;<br>    str.substring(str.length-1,str.length);</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/07/31/观看FungLeo-s-Blog有感/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-分页组件中有关firstChildhe-nextSibling的问题" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1300,94 +1395,9 @@ function manNum(num,str) {
 
 
   
-    <article id="post-安装devtools中出现的种种问题" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/06/06/安装devtools中出现的种种问题/">安装devtools中出现的种种问题</a>
-    </h1>
-  
-
-        
-        <a href="/2018/06/06/安装devtools中出现的种种问题/" class="archive-article-date">
-  	<time datetime="2018-06-06T15:27:54.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-06</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <ol>
-<li><p>在官网中下载devtools，然后利用</p>
-<pre><code>npm install//下载相关包
-</code></pre><p>在这一步中我折腾了好久，总是出现很奇葩的问题网上搜了很多，但是没有解决，所以我直接简单粗暴的将devtools删除了，然后重新装，还是有问题，最后找到了解决办法，用淘宝镜像cpnm，才将包都下载成功<br>2.npm run build<br>这一步中，出现问题<br>npm run build项目出错：</p>
-<pre><code>npm ERR! code ELIFECYCLE errno 2
-</code></pre></li>
-</ol>
-<p>最终在网上搜的解决是 node_module包没有下好，所以有用了</p>
-<pre><code> rm -rf node_modules
-   rm package-lock.json
-npm cache clear --force//这个报告说没有这个命令，可忽略
-npm install
-</code></pre><p>然后在本地目录下看到node_module这个包已经清楚干净了，最后重新来一遍</p>
-<pre><code>cnpm install//国内一般用淘宝镜像比较保险
-</code></pre><p>这一遍终于成功了<br>然后继续cnpm run build,也顺利安装成功</p>
-<p>3。按照网上的教程，将下载好的<br>    <a href="https://www.jianshu.com/p/01a61c8c722f" target="_blank" rel="noopener">devtools安装和使用</a> 手册后<br>成功将插件安在了谷歌浏览器下，这时又出现了一个恼火的问题<br>4.由于我对于devtool的不理解，我以为只要安装了这个插件，不管有没有vue项目运行，这个插件都会高亮的出现在谷歌浏览器的右上角上，所以当右上角在我的百度页面上灰暗的时候，我觉得我没有安装成功，所以一直调试，搜了很多资料后发现，当我们运行的项目中有vue文件，右上角的vue图标次啊会高亮，否者，一直是灰暗的，这个归结于我对于devtools的不理解，才造成的，请大家谨慎。<br>5.后面又出现了两个问题<br>  a.点击图标时提示Vue.js not detected<br>解决方法：</p>
-<p>（1）你的页面没有导入vue.js文件，或者不是vue应用。就是我上面说的问题第4点<br> b.提示：Vue.js is detected on this page. Devtools inspection is not available because it’s in production mode or explicitly disabled by the author.</p>
-<p>解决方法：</p>
-<p>（1）检查自己是否使用压缩后的js，vue.min.js，使用压缩后的js文件，会失去错误提示和警告。也可能会导致上面的问题。</p>
-<p>（2）尝试安装方法中的第5步中的配置。</p>
-<p> 具体请参考<a href="https://www.jianshu.com/p/01a61c8c722f" target="_blank" rel="noopener">devtools安装和使用</a></p>
-<p>####总结<br>   在安装，使用的过程中，我虽然出现了好多问题，但是觉得自己坚持下来的，还是挺高兴的，<br>   优点：坚持下来了<br>   缺点：效率太低了，思维不够敏捷，还需要加强。</p>
-<p>##万事胜意哦！！！！！！！！</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/06/06/安装devtools中出现的种种问题/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
     </nav>
   
 

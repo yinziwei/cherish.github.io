@@ -159,6 +159,153 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-手写jsonp" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/08/13/手写jsonp/">手写jsonp</a>
+    </h1>
+  
+
+        
+        <a href="/2018/08/13/手写jsonp/" class="archive-article-date">
+  	<time datetime="2018-08-13T04:07:37.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-13</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="本篇主要是是有关jsonp的用法样例"><a href="#本篇主要是是有关jsonp的用法样例" class="headerlink" title="本篇主要是是有关jsonp的用法样例"></a>本篇主要是是有关jsonp的用法样例</h2><p>简要介绍jsonp的原理：</p>
+<h3 id="动态生成一个JavaScript标签，其src由接口url、请求参数、callback函数名拼接而成，利用js标签没有跨域限制的特性实现跨域请求。"><a href="#动态生成一个JavaScript标签，其src由接口url、请求参数、callback函数名拼接而成，利用js标签没有跨域限制的特性实现跨域请求。" class="headerlink" title="动态生成一个JavaScript标签，其src由接口url、请求参数、callback函数名拼接而成，利用js标签没有跨域限制的特性实现跨域请求。"></a>动态生成一个JavaScript标签，其src由接口url、请求参数、callback函数名拼接而成，利用js标签没有跨域限制的特性实现跨域请求。</h3><p>如下<br>jsonp.js</p>
+<pre><code>function (window,document) {
+&apos;use strict&apos;
+var jsonp =function (url,data,callback) {
+    //0. data是否是字符串，是的话证明data值就是函数名
+    if (typeof data == &apos;string&apos;) {
+        callback = data
+        data = {}
+    }
+    //1 挂载回调函数  ,这一步可要可不要，关键看后台有没有相应的处理
+    var fnSuffix=Math.random().toString().replace(&apos;.&apos;,&apos;&apos;);
+    var cbFuncName=&apos;my_json_cb_&apos;+fnSuffix;
+    //将函数挂载在全局环境的方式不推荐  使用cbs.mycb_
+    window[cbFuncName]=callback;
+    //2.将data转化为url字符串的形式
+    //{id,1,name:&apos;cherish}=&gt;id=1&amp;name=cherish
+    var chooseStr=url.indexOf(&apos;?&apos;)==-1?&apos;?&apos;:&apos;&amp;&apos;;
+    for (var key in data){
+        chooseStr+=key+&apos;=&apos;+data[key]+&apos;&amp;&apos;
+    }
+    //chooseStrUrl=?id=1&amp;name=cherish&amp;
+    //3.处理url地址中的会调参数
+    chooseStr+=&apos;callback=&apos;+cbFunName;
+    //chooseStrUrl=?id=1&amp;name=cherish&amp;callback=cbFunName;
+    //4.创造script的标签
+    var scriptElement=document.createElement(&apos;script&apos;)
+    scriptElement.scr=url+chooseStr
+    //5.将script标签放在页面上
+    document.body.appendChild(scriptElement)
+    //append后页面自动对这个地址发送请求，请求完成后自动执行脚本
+
+
+
+
+
+}
+/*把jsonp放到全局*/
+window.$jsonp=jsonp;
+})(window,document)
+</code></pre><p>jsonp.html</p>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;UTF-8&quot;&gt;
+&lt;title&gt;jsonp的实现方式&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div id=&quot;result&quot;&gt;&lt;/div&gt;
+&lt;script src=&quot;jsonp.js&quot;&gt;&lt;/script&gt;
+&lt;script&gt;
+//回调函数
+function mycd(data) {
+    document.getElementById(&apos;result&apos;).innerHTML=JSON.stringify(data)
+}
+(function () {
+    $jsonp(//地址
+        &apos;http://api.douban.com/v2/movie/in_theaters&apos;,
+        //传递的参数
+        {
+            count:10,start:5
+        },
+        //回调函数
+        mycd
+     )
+
+})
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre><p>过程描述：</p>
+<ol>
+<li><p>.在客户端调用提供JSONP支持的URL Service，获取JSONP格式数据。<br>比如客户想访问</p>
+<p> <a href="http://www.yiwuku.com/myService.aspx" target="_blank" rel="noopener">http://www.yiwuku.com/myService.aspx</a>  jsonp=callbackFunction</p>
+</li>
+<li><p>假设客户期望返回JSON数据：</p>
+<p>  [“customername1”,”customername2”]</p>
+</li>
+</ol>
+<ol start="3">
+<li><p>那么真正返回到客户端的Script Tags:</p>
+<p>  callbackFunction([“customername1”,”customername2”])</p>
+</li>
+</ol>
+<p>转载自： &lt;&gt;(<a href="https://blog.csdn.net/zxiang248/article/details/52633920" target="_blank" rel="noopener">https://blog.csdn.net/zxiang248/article/details/52633920</a>)</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/08/13/手写jsonp/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-javascript事件流，事件代理，target和currentTarget" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1252,69 +1399,6 @@ exp:
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2018/07/12/float-的特性清除浮动的方法/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-简易留言板调试中出现得bug" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/06/07/简易留言板调试中出现得bug/">简易留言板调试中出现得bug</a>
-    </h1>
-  
-
-        
-        <a href="/2018/06/07/简易留言板调试中出现得bug/" class="archive-article-date">
-  	<time datetime="2018-06-07T11:27:57.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-07</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>###问题<br>1.显示总是出现vue.js is not detected,最终将devtools重新运行了一遍，然后将vue.js改成开发版本才成功。<br>2。由于马虎，代码敲错了，到时函数调用时总是没有返回值<br>3.也是由于马虎，导致将关键字method少写了一个s，导致调用函数click时总是出问题。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/06/07/简易留言板调试中出现得bug/">展开全文 >></a>
         </p>
       
 

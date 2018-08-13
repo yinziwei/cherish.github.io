@@ -6,19 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>爱奇艺校招前端第三场 | cherish</title>
+  <title>javascript事件流，事件代理，4种事件处理程序的形式 | cherish</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="###选择题  设栈S初始状态为空。元素1,2,3,4,5,6依次通过栈S，若出栈的顺序为4,6,5,3,2,1，则栈S的容量至少应该为？  重要过程如下： 1234  此时最小容量是4 123   -&amp;gt;4out   此时最小容量是4 123   &amp;lt;-5in &amp;lt;-6 in  12356  此时最小容量是5  2.在Linux系统下，下列哪个命令可以查看曾经登录到此系统的用户清单?">
+  <meta name="description" content="事件流事件流描述的是从页面接收到事件的顺序，一些历史发展的内容这里就不提了，直接讲”DOM2级事件”，事件流包括三个阶段：事件捕获阶段、处于目标阶段和事件冒泡阶段。最先发生的是事件捕获，然后是具体的实际目标收到事件，最后才是冒泡阶段，可以在这个阶段对事件做出响应。 事件处理程序一般分为4种 一· HTML事件处理程序  &amp;lt;input type=&amp;quot;text&amp;quot; onclick">
 <meta property="og:type" content="article">
-<meta property="og:title" content="爱奇艺校招前端第三场">
-<meta property="og:url" content="http://yoursite.com/2018/06/07/爱奇艺校招前端第三场/index.html">
+<meta property="og:title" content="javascript事件流，事件代理，4种事件处理程序的形式">
+<meta property="og:url" content="http://yoursite.com/2018/08/03/javascript事件流，事件代理，target和currentTarget/index.html">
 <meta property="og:site_name" content="cherish">
-<meta property="og:description" content="###选择题  设栈S初始状态为空。元素1,2,3,4,5,6依次通过栈S，若出栈的顺序为4,6,5,3,2,1，则栈S的容量至少应该为？  重要过程如下： 1234  此时最小容量是4 123   -&amp;gt;4out   此时最小容量是4 123   &amp;lt;-5in &amp;lt;-6 in  12356  此时最小容量是5  2.在Linux系统下，下列哪个命令可以查看曾经登录到此系统的用户清单?">
+<meta property="og:description" content="事件流事件流描述的是从页面接收到事件的顺序，一些历史发展的内容这里就不提了，直接讲”DOM2级事件”，事件流包括三个阶段：事件捕获阶段、处于目标阶段和事件冒泡阶段。最先发生的是事件捕获，然后是具体的实际目标收到事件，最后才是冒泡阶段，可以在这个阶段对事件做出响应。 事件处理程序一般分为4种 一· HTML事件处理程序  &amp;lt;input type=&amp;quot;text&amp;quot; onclick">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-08-11T13:01:22.008Z">
+<meta property="og:updated_time" content="2018-08-13T03:58:47.437Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="爱奇艺校招前端第三场">
-<meta name="twitter:description" content="###选择题  设栈S初始状态为空。元素1,2,3,4,5,6依次通过栈S，若出栈的顺序为4,6,5,3,2,1，则栈S的容量至少应该为？  重要过程如下： 1234  此时最小容量是4 123   -&amp;gt;4out   此时最小容量是4 123   &amp;lt;-5in &amp;lt;-6 in  12356  此时最小容量是5  2.在Linux系统下，下列哪个命令可以查看曾经登录到此系统的用户清单?">
+<meta name="twitter:title" content="javascript事件流，事件代理，4种事件处理程序的形式">
+<meta name="twitter:description" content="事件流事件流描述的是从页面接收到事件的顺序，一些历史发展的内容这里就不提了，直接讲”DOM2级事件”，事件流包括三个阶段：事件捕获阶段、处于目标阶段和事件冒泡阶段。最先发生的是事件捕获，然后是具体的实际目标收到事件，最后才是冒泡阶段，可以在这个阶段对事件做出响应。 事件处理程序一般分为4种 一· HTML事件处理程序  &amp;lt;input type=&amp;quot;text&amp;quot; onclick">
   
     <link rel="alternative" href="/atom.xml" title="cherish" type="application/atom+xml">
   
@@ -158,164 +158,121 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-爱奇艺校招前端第三场" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-javascript事件流，事件代理，target和currentTarget" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      爱奇艺校招前端第三场
+      javascript事件流，事件代理，4种事件处理程序的形式
     </h1>
   
 
         
-        <a href="/2018/06/07/爱奇艺校招前端第三场/" class="archive-article-date">
-  	<time datetime="2018-06-07T02:16:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-07</time>
+        <a href="/2018/08/03/javascript事件流，事件代理，target和currentTarget/" class="archive-article-date">
+  	<time datetime="2018-08-03T02:52:05.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-03</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>###选择题</p>
+        <h2 id="事件流"><a href="#事件流" class="headerlink" title="事件流"></a>事件流</h2><p>事件流描述的是从页面接收到事件的顺序，一些历史发展的内容这里就不提了，直接讲”DOM2级事件”，事件流包括三个阶段：事件捕获阶段、处于目标阶段和事件冒泡阶段。最先发生的是事件捕获，然后是具体的实际目标收到事件，最后才是冒泡阶段，可以在这个阶段对事件做出响应。</p>
+<h3 id="事件处理程序"><a href="#事件处理程序" class="headerlink" title="事件处理程序"></a>事件处理程序</h3><p>一般分为4种</p>
+<p>一· HTML事件处理程序</p>
+<pre><code> &lt;input type=&quot;text&quot; onclick=&quot;alert(event.type)&quot;&gt;    //click
+&lt;input type=&quot;text&quot; onclick=&quot;alert(this.value)&quot; value=&quot;wo&quot;&gt; 
+  // wo
+&lt;input type=&quot;text&quot; onclick=&quot;funName()&quot;&gt;
+</code></pre><p>缺点：</p>
 <ol>
-<li><p>设栈S初始状态为空。元素1,2,3,4,5,6依次通过栈S，若出栈的顺序为4,6,5,3,2,1，则栈S的容量至少应该为？</p>
-<pre><code> 重要过程如下：
-1234  此时最小容量是4
-123   -&gt;4out   此时最小容量是4
-123   &lt;-5in &lt;-6 in 
-12356  此时最小容量是5 
-</code></pre><p>2.在Linux系统下，下列哪个命令可以查看曾经登录到此系统的用户清单?</p>
-<pre><code>last命令用于显示用户最近登录信息。单独执行last命令，它会读取/var/log/wtmp的文件，并把该给文件的内容记录的登入系统的用户名单全部显示出来。
-</code></pre></li>
+<li>html和js高度耦合</li>
+<li>跨浏览器的时候会有问题</li>
+<li>存在时差问题，事件触发以后，绑定的函数还没有加载。</li>
 </ol>
-<p>3.在软件开发中，经典的模型就是瀑布模型，下列关于瀑布模型的说法正确的是()</p>
-<pre><code>瀑布模型采用结构化的分析与设计方法，将逻辑实现与物理实现分开
-</code></pre><h2 id="编程题"><a href="#编程题" class="headerlink" title="编程题"></a>编程题</h2><p>1.牛牛有4根木棍,长度分别为a,b,c,d。羊羊家提供改变木棍长度的服务,如果牛牛支付一个硬币就可以让一根木棍的长度加一或者减一。牛牛需要用这四根木棍拼凑一个正方形出来,牛牛最少需要支付多少硬币才能让这四根木棍拼凑出正方形。<br>输入描述:<br>输入包括一行,四个整数a,b,c,d(1 ≤ a,b,c,d ≤ 10^6), 以空格分割</p>
-<p>输出描述:<br>输出一个整数,表示牛牛最少需要支付的硬币</p>
-<p>输入例子1:<br>4 1 5 4</p>
-<p>输出例子1:<br>4</p>
-<pre><code>    while(line=readline()){
-     function minMoney(str) {
-   var mid=0;
-   var money=0;
-   var arr=str.split(&quot; &quot;);
-   arr.sort((a,b)=&gt;{
-       return a-b;
-   })
- var mid1 =(parseInt(arr[1])+parseInt(arr[2]))/2
-   mid=Math.ceil(mid1)
-   for(var j=0;j&lt;arr.length;j++){
-       if(arr[j]!==mid){
-           var cha=Math.abs(arr[j]-mid)
-           money+=cha;
-       }
-   }
-   return money;
-   }
- print(minMoney(line));
+<p>优点：</p>
+<ol>
+<li>这样会创建一个封装这元素属性值的函数，这个函数中有一个局部变量  event，也就是事件对象,且在事件内部，this指向事件的目标元素</li>
+<li>扩展作用域</li>
+</ol>
+<p>二、DOM0级事件处理程序</p>
+<pre><code>var btn=document.getElementById(&apos;myBtn&apos;)
+btn.onclick=function(){
+alert(this.id)  // btn
 }
-</code></pre><p>2.牛牛的老师给出了一个区间的定义:对于x ≤ y,[x, y]表示x到y之间(包括x和y)的所有连续整数集合。例如[3,3] = {3}, [4,7] = {4,5,6,7}.牛牛现在有一个长度为n的递增序列,牛牛想知道需要多少个区间并起来等于这个序列。<br>例如:<br>{1,2,3,4,5,6,7,8,9,10}最少只需要[1,10]这一个区间<br>{1,3,5,6,7}最少只需要[1,1],[3,3],[5,7]这三个区间<br>输入描述:<br>输入包括两行,第一行一个整数n(1 ≤ n ≤ 50),<br>第二行n个整数a<a href="1 ≤ a[i] ≤ 50">i</a>,表示牛牛的序列,保证序列是递增的。</p>
-<p>输出描述:<br>输出一个整数,表示最少区间个数。</p>
-<p>输入例子1:<br>5<br>1 3 5 6 7</p>
-<p>输出例子1:<br>3</p>
-<pre><code>var readline = require(&apos;readline&apos;);
-
-       rl = readline.createInterface({
-   input: process.stdin,
-   output: process.stdout
-       });
-
-   var K = 2; // 输入K行，输入有几行，k就为几行
-   var inputs = [];
-   rl.on(&apos;line&apos;, function(data) {
-   // 获取输入
-   inputs.push(data);
-   if (K == inputs.length) { //
-       // 处理
-       // var str1=inputs[0].split(&quot; &quot;);   //字符串
-   //var str2=inputs[1].split(&quot; &quot;) ;  //字符串
-       var result1 = area(inputs[0],inputs[1]);
-       // 输出结果
-       console.log(result1);
-       // 清0
-       inputs.length = 0;
-
-   }
-  });
-function area(num,str) {
-   var count=0;
-   var arr=str.split(&quot; &quot;);
-   for(var i=num-1;i&gt;=0;i--) {
-
-           var cha = arr[i] - arr[i-1];
-           if (cha === 1 || cha === 0) {
-           } else {
-               count++;
-           }
-
-
-
-   }
-   return count;
-
-   }
-</code></pre><p>3.牛牛举办了一场数字游戏,有n个玩家参加这个游戏,游戏开始每个玩家选定一个数,然后将这个数写在纸上(十进制数,无前缀零),然后接下来对于每一个数字将其数位按照非递减顺序排列,得到新的数,新数的前缀零将被忽略。得到最大数字的玩家赢得这个游戏。<br>输入描述:<br>输入包括两行,第一行包括一个整数n(1 ≤ n ≤ 50),即玩家的人数<br>第二行n个整数x<a href="0 ≤ x[i] ≤ 100000">i</a>,即每个玩家写下的整数。</p>
-<p>输出描述:<br>输出一个整数,表示赢得游戏的那个玩家获得的最大数字是多少。</p>
-<p>输入例子1:<br>3<br>9638 8210 331</p>
-<p>输出例子1:</p>
-<pre><code> var readline = require(&apos;readline&apos;);
-
-rl = readline.createInterface({
-    input: process.stdin,
-    output: process.stdout
-});
-
-var K = 2; // 输入K行，输入有几行，k就为几行
-var inputs = [];
-rl.on(&apos;line&apos;, function(data) {
-    // 获取输入
-    inputs.push(data);
-    if (K == inputs.length) { //
-        // 处理
-        // var str1=inputs[0].split(&quot; &quot;);   //字符串
-    //var str2=inputs[1].split(&quot; &quot;) ;  //字符串
-        var result1 = manNum(inputs[0],inputs[1]);
-        // 输出结果
-        console.log(result1);
-        // 清0
-        inputs.length = 0;
-
+</code></pre><p>删除事件</p>
+<pre><code>btn.onclick=null
+</code></pre><p>优点：</p>
+<ol>
+<li>简单</li>
+<li>可以跨浏览器</li>
+</ol>
+<p>这种形式添加的事件流建在冒泡阶段被处理</p>
+<p>三·DOM2级事件处理程序</p>
+<pre><code>var btn=document.getElementById(&apos;myBtn&apos;)
+btn.addEventListener(&quot;click&quot;,handler,false)
+btn.addEventListener(&quot;click&quot;,function(){alert(this.id)},false)
+ //btn
+btn.addEventListener(&quot;click&quot;,function(){alert(&quot;hello&quot;)},false)
+ //hello
+</code></pre><p>特性：</p>
+<ol>
+<li>注意最后一个参数默认为false，表示事件将在冒泡过程被处理，true时则是在捕获过程被处理</li>
+<li>与DOM0级方法一样，这里添加的事件处理程序也是在其依附的元素的作用域中进行</li>
+<li>这种添加方法的主要好处就是可以添加多个事件处理程序,如上的例子中一次会出现btn,hello</li>
+<li>用该方法添加的事件处理程序智能用removeEventListen()来移除且参数与addEventListener一样。因为匿名函数不好一处，所以中的处理函数一般都用handler这样在外面声明的函数来处理</li>
+<li>一般都是在冒泡阶段处理,即最后一个参数为false，这样可以最大限度的兼容各种浏览器</li>
+</ol>
+<p>四·IE事件处理程序</p>
+<pre><code>var btn=document.getElementById(&apos;myBtn&apos;)
+btn.attachEvent(&apos;onclick&apos;,function(){
+alert(this===window)})
+ //true
+btn.attachEvent(&apos;onclick&apos;,function(){
+alert(&quot;hello&quot;)})
+ //hello
+</code></pre><p>特性：</p>
+<ol>
+<li>IE中的attachEvent（）与使用DOM0级方法的主要区别在于事件处理程序的作用域，在使用DOM0级方法时，事件处理程序回在其所属元素的作用域内进行，而在IE情况下，事件会在全局作用域中运行，此时this=window</li>
+<li>IE中的attachEvent（）与addEventListener类似，可以添加多种方法，但执行顺序是以相反的方式被触发的,所以结果是hello，true</li>
+<li>IE中的attachEvent（）与addEventListener类似，移除方法只能用自己的固有的detachEvent()来移除。</li>
+<li>添加的事件默认只能在冒泡阶段处理</li>
+</ol>
+<h2 id="跨浏览器的事件处理程序"><a href="#跨浏览器的事件处理程序" class="headerlink" title="跨浏览器的事件处理程序"></a>跨浏览器的事件处理程序</h2><p>封装一个EvenUtil对象 ，如下</p>
+<pre><code>var EvenUtil={
+addHandler:function (element,type,handler) {
+    if (element.addEventListener){
+        element.addEventListener(type,handler,false)
+    } else if (element.attachEvent){
+        element.attachEvent(&quot;on&quot;+type),handler
+    } else {
+        element[&quot;on&quot;+type]=handler
     }
-});
-function manNum(num,str) {
-    var arr=str.split(&quot; &quot;);
-    var result=0;
-    for(var i=0;i&lt;num;i++){
-        var newArr=arr[i].split(&quot;&quot;);
-        newArr.sort((a,b)=&gt;{
-            return a-b;
-        })
-        for(var j=0;j&lt;newArr.length;j++){
-            if(!newArr[j]){
-                newArr.shift(newArr[j]);
-            }else{
-             var newStr= newArr.join(&quot;&quot;);
-               if( parseInt(newStr)&gt;parseInt(result)){//注意，这里的类型转换有问题，必须转换为number；类型才可以
-                    result=newStr
-                }
-                break;
-            }
 
-
-        }
+},
+removeHandler:function (element,type,handler) {
+    if (element.removeEventListener){
+        element.removeEventListener(type,handler,false)
+    } else if (element.detachEvent){
+        element.detachEvent(&quot;on&quot;+type),handler
+    } else {
+        element[&quot;on&quot;+type]=null
     }
-    return  result;
+
 }
-</code></pre><h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>  1.今天学会了在牛客网上编程题的多行输入和输出。<br>  2.拿到编程题后不再那么害怕了，基本上有了思路了，嘻嘻</p>
-<p>##万事胜意！！！！！！！！！</p>
-
+}
+</code></pre><h2 id="事件委托"><a href="#事件委托" class="headerlink" title="事件委托"></a>事件委托</h2><p>事件委托是什么呢？最简单来说：在父元素上添加可以处理子元素事件的事件处理函数。利用了事件冒泡，指定一个事件处理函数，来处理同一种类型的多个事件。这里顺便一起说下target和currenttarget的区别，target是触发事件的最具体的元素， currenttarget是绑定事件的元素(在函数中一般等于this)</p>
+<pre><code>&lt;div id=&quot;outter&quot;&gt;
+   &lt;div id=&quot;inner&quot;&gt;&lt;/div&gt;
+&lt;/div&gt;
+var outter = document.querySelector(&apos;#outter&apos;)
+outter.addEventListener(&apos;click&apos;,function(e){
+    console.log(e.target.id)  //inner
+    console.log(e.currentTarget.id)  //outter
+    console.log(this === e.currentTarget)  //true
+},false);
+</code></pre>
       
 
       
@@ -394,7 +351,7 @@ function manNum(num,str) {
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/06/07/爱奇艺校招前端第三场/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/08/03/javascript事件流，事件代理，target和currentTarget/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -408,18 +365,9 @@ function manNum(num,str) {
   
 <nav id="article-nav">
   
-    <a href="/2018/06/07/简易留言板调试中出现得bug/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          简易留言板调试中出现得bug
-        
-      </div>
-    </a>
   
-  
-    <a href="/2018/06/06/安装devtools中出现的种种问题/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">安装devtools中出现的种种问题</div>
+    <a href="/2018/07/31/观看FungLeo-s-Blog有感/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">观看FungLeo&#39;s Blog有感</div>
       <i class="icon-circle-right"></i>
     </a>
   

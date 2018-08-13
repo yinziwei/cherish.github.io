@@ -15,7 +15,7 @@
 <meta property="og:site_name" content="cherish">
 <meta property="og:description" content="1、函数体内的this对象就是定义时所在的对象，而不是使用时所在的对象2、不可以当作构造函数，也就是不可以使用new命令3、不可以使用arguments对象，该对象在函数体内不存在，可以用rest参数来代替4、不可以使用yield命令，因此箭头函数不能用作generator函数。典型事例： function foo(){ setTimeout(()=&amp;gt;{     console.log(&amp;a">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-07-12T09:26:26.080Z">
+<meta property="og:updated_time" content="2018-08-11T03:16:52.609Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="箭头函数">
 <meta name="twitter:description" content="1、函数体内的this对象就是定义时所在的对象，而不是使用时所在的对象2、不可以当作构造函数，也就是不可以使用new命令3、不可以使用arguments对象，该对象在函数体内不存在，可以用rest参数来代替4、不可以使用yield命令，因此箭头函数不能用作generator函数。典型事例： function foo(){ setTimeout(()=&amp;gt;{     console.log(&amp;a">
@@ -186,8 +186,8 @@ setTimeout(()=&gt;{
 }
 var id=21;
 foo.call({id:42})//id:42
-</code></pre><p>此时setTimeout的参数是一个箭头函数，箭头函数的定义是在foo函数生成中生效的，而它真正执行要等到100ms后，如果时普通函数，执行时this应该执行全局函数window，这时应该输出21，但是箭头函数导致this总是只想函数定义生效时所在的对象，所以输出了42<br>  箭头函数this指向固定化的原因是箭头函数根本就没有自己的this，导致内部的this就是外层代码块的this，正是他没有自己的this，所以他不能用作构造函数。<br>箭头函数中不存在只想外层函数的对应变量：arguments,super,new.target</p>
-<h1 id="嵌套的箭头函数"><a href="#嵌套的箭头函数" class="headerlink" title="嵌套的箭头函数"></a>嵌套的箭头函数</h1><h1 id="绑定this"><a href="#绑定this" class="headerlink" title="绑定this"></a>绑定this</h1><p>函数绑定符： ：：<br>冒号左边为一个对象，右边是一个函数，该运算将自动将左边的对象作为上下文环境绑定到右边的函数上<br>     foo:bar//等同于<br>        bar:bind(foo)</p>
+</code></pre><p>此时setTimeout的参数是一个箭头函数，箭头函数的定义是在foo函数生成中生效的，而它真正执行要等到100ms后，如果时普通函数，执行时this应该执行全局函数window，这时应该输出21，但是箭头函数导致this总是只想函数定义生效时所在的对象，所以输出了42<br>  箭头函数this指向固定化的原因是箭头函数根本就没有自己的this，导致内部的this就是外层代码块的this，正是他没有自己的this，所以他不能用作构造函数。<br>箭头函数中不存在指向外层函数的对应变量：arguments,super,new.target</p>
+<h1 id="嵌套的箭头函数"><a href="#嵌套的箭头函数" class="headerlink" title="嵌套的箭头函数"></a>嵌套的箭头函数</h1><h1 id="绑定this"><a href="#绑定this" class="headerlink" title="绑定this"></a>绑定this</h1><p>函数绑定符： ：<br>冒号左边为一个对象，右边是一个函数，该运算将自动将左边的对象作为上下文环境绑定到右边的函数上<br>     foo:bar//等同于<br>        bar:bind(foo)</p>
 <h1 id="尾调用"><a href="#尾调用" class="headerlink" title="尾调用"></a>尾调用</h1><p>就是指某个函数的最后就是调用另外一个函数</p>
 <h1 id="rest参数"><a href="#rest参数" class="headerlink" title="rest参数"></a>rest参数</h1><p>用于获取函数中的多余参数，rest搭配的一个变量是一个数组，改便改良将多余的参数放入其中。</p>
 

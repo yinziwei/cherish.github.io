@@ -159,6 +159,205 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-爱奇艺校招前端第三场" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/06/07/爱奇艺校招前端第三场/">爱奇艺校招前端第三场</a>
+    </h1>
+  
+
+        
+        <a href="/2018/06/07/爱奇艺校招前端第三场/" class="archive-article-date">
+  	<time datetime="2018-06-07T02:16:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-07</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>###选择题</p>
+<ol>
+<li><p>设栈S初始状态为空。元素1,2,3,4,5,6依次通过栈S，若出栈的顺序为4,6,5,3,2,1，则栈S的容量至少应该为？</p>
+<pre><code> 重要过程如下：
+1234  此时最小容量是4
+123   -&gt;4out   此时最小容量是4
+123   &lt;-5in &lt;-6 in 
+12356  此时最小容量是5 
+</code></pre><p>2.在Linux系统下，下列哪个命令可以查看曾经登录到此系统的用户清单?</p>
+<pre><code>last命令用于显示用户最近登录信息。单独执行last命令，它会读取/var/log/wtmp的文件，并把该给文件的内容记录的登入系统的用户名单全部显示出来。
+</code></pre></li>
+</ol>
+<p>3.在软件开发中，经典的模型就是瀑布模型，下列关于瀑布模型的说法正确的是()</p>
+<pre><code>瀑布模型采用结构化的分析与设计方法，将逻辑实现与物理实现分开
+</code></pre><h2 id="编程题"><a href="#编程题" class="headerlink" title="编程题"></a>编程题</h2><p>1.牛牛有4根木棍,长度分别为a,b,c,d。羊羊家提供改变木棍长度的服务,如果牛牛支付一个硬币就可以让一根木棍的长度加一或者减一。牛牛需要用这四根木棍拼凑一个正方形出来,牛牛最少需要支付多少硬币才能让这四根木棍拼凑出正方形。<br>输入描述:<br>输入包括一行,四个整数a,b,c,d(1 ≤ a,b,c,d ≤ 10^6), 以空格分割</p>
+<p>输出描述:<br>输出一个整数,表示牛牛最少需要支付的硬币</p>
+<p>输入例子1:<br>4 1 5 4</p>
+<p>输出例子1:<br>4</p>
+<pre><code>    while(line=readline()){
+     function minMoney(str) {
+   var mid=0;
+   var money=0;
+   var arr=str.split(&quot; &quot;);
+   arr.sort((a,b)=&gt;{
+       return a-b;
+   })
+ var mid1 =(parseInt(arr[1])+parseInt(arr[2]))/2
+   mid=Math.ceil(mid1)
+   for(var j=0;j&lt;arr.length;j++){
+       if(arr[j]!==mid){
+           var cha=Math.abs(arr[j]-mid)
+           money+=cha;
+       }
+   }
+   return money;
+   }
+ print(minMoney(line));
+}
+</code></pre><p>2.牛牛的老师给出了一个区间的定义:对于x ≤ y,[x, y]表示x到y之间(包括x和y)的所有连续整数集合。例如[3,3] = {3}, [4,7] = {4,5,6,7}.牛牛现在有一个长度为n的递增序列,牛牛想知道需要多少个区间并起来等于这个序列。<br>例如:<br>{1,2,3,4,5,6,7,8,9,10}最少只需要[1,10]这一个区间<br>{1,3,5,6,7}最少只需要[1,1],[3,3],[5,7]这三个区间<br>输入描述:<br>输入包括两行,第一行一个整数n(1 ≤ n ≤ 50),<br>第二行n个整数a<a href="1 ≤ a[i] ≤ 50">i</a>,表示牛牛的序列,保证序列是递增的。</p>
+<p>输出描述:<br>输出一个整数,表示最少区间个数。</p>
+<p>输入例子1:<br>5<br>1 3 5 6 7</p>
+<p>输出例子1:<br>3</p>
+<pre><code>var readline = require(&apos;readline&apos;);
+
+       rl = readline.createInterface({
+   input: process.stdin,
+   output: process.stdout
+       });
+
+   var K = 2; // 输入K行，输入有几行，k就为几行
+   var inputs = [];
+   rl.on(&apos;line&apos;, function(data) {
+   // 获取输入
+   inputs.push(data);
+   if (K == inputs.length) { //
+       // 处理
+       // var str1=inputs[0].split(&quot; &quot;);   //字符串
+   //var str2=inputs[1].split(&quot; &quot;) ;  //字符串
+       var result1 = area(inputs[0],inputs[1]);
+       // 输出结果
+       console.log(result1);
+       // 清0
+       inputs.length = 0;
+
+   }
+  });
+function area(num,str) {
+   var count=0;
+   var arr=str.split(&quot; &quot;);
+   for(var i=num-1;i&gt;=0;i--) {
+
+           var cha = arr[i] - arr[i-1];
+           if (cha === 1 || cha === 0) {
+           } else {
+               count++;
+           }
+
+
+
+   }
+   return count;
+
+   }
+</code></pre><p>3.牛牛举办了一场数字游戏,有n个玩家参加这个游戏,游戏开始每个玩家选定一个数,然后将这个数写在纸上(十进制数,无前缀零),然后接下来对于每一个数字将其数位按照非递减顺序排列,得到新的数,新数的前缀零将被忽略。得到最大数字的玩家赢得这个游戏。<br>输入描述:<br>输入包括两行,第一行包括一个整数n(1 ≤ n ≤ 50),即玩家的人数<br>第二行n个整数x<a href="0 ≤ x[i] ≤ 100000">i</a>,即每个玩家写下的整数。</p>
+<p>输出描述:<br>输出一个整数,表示赢得游戏的那个玩家获得的最大数字是多少。</p>
+<p>输入例子1:<br>3<br>9638 8210 331</p>
+<p>输出例子1:</p>
+<pre><code> var readline = require(&apos;readline&apos;);
+
+rl = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout
+});
+
+var K = 2; // 输入K行，输入有几行，k就为几行
+var inputs = [];
+rl.on(&apos;line&apos;, function(data) {
+    // 获取输入
+    inputs.push(data);
+    if (K == inputs.length) { //
+        // 处理
+        // var str1=inputs[0].split(&quot; &quot;);   //字符串
+    //var str2=inputs[1].split(&quot; &quot;) ;  //字符串
+        var result1 = manNum(inputs[0],inputs[1]);
+        // 输出结果
+        console.log(result1);
+        // 清0
+        inputs.length = 0;
+
+    }
+});
+function manNum(num,str) {
+    var arr=str.split(&quot; &quot;);
+    var result=0;
+    for(var i=0;i&lt;num;i++){
+        var newArr=arr[i].split(&quot;&quot;);
+        newArr.sort((a,b)=&gt;{
+            return a-b;
+        })
+        for(var j=0;j&lt;newArr.length;j++){
+            if(!newArr[j]){
+                newArr.shift(newArr[j]);
+            }else{
+             var newStr= newArr.join(&quot;&quot;);
+               if( parseInt(newStr)&gt;parseInt(result)){//注意，这里的类型转换有问题，必须转换为number；类型才可以
+                    result=newStr
+                }
+                break;
+            }
+
+
+        }
+    }
+    return  result;
+}
+</code></pre><h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>  1.今天学会了在牛客网上编程题的多行输入和输出。<br>  2.拿到编程题后不再那么害怕了，基本上有了思路了，嘻嘻</p>
+<p>##万事胜意！！！！！！！！！</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/06/07/爱奇艺校招前端第三场/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-安装devtools中出现的种种问题" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -798,7 +997,7 @@ console.log(ans(&apos;1 2 3&apos;))
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>###http协议<br> ♂☆＊很＆;简单＇£<br>HTTP 304 未改变说明无需再次传输请求的内容,也就是说可以使用缓存的内容<br>301永久重定向、302暂时重定向<br>http请求字段range:<br>    格式： Range: bytes=start-end<br>    请求资源的部分内容（不包括响应头的大小），单位是byte，即字节，从0开始.<br>    如果服务器能够正常响应的话，服务器会返回 206 Partial Content 的状态码及说明.</p>
+        <p>###http协议<br>HTTP 304 未改变说明无需再次传输请求的内容,也就是说可以使用缓存的内容<br>301永久重定向、302暂时重定向<br>http请求字段range:<br>    格式： Range: bytes=start-end<br>    请求资源的部分内容（不包括响应头的大小），单位是byte，即字节，从0开始.<br>    如果服务器能够正常响应的话，服务器会返回 206 Partial Content 的状态码及说明.</p>
 <pre><code>如果不能处理这种Range的话，就会返回整个资源以及响应状态码为 200 OK .
 </code></pre><p>http的header分割符：\r\n</p>
 <p>###UDP通信</p>
@@ -851,8 +1050,29 @@ function three(num1,num2){
     }
     return threeNumber;
 }
-</code></pre><p>2.牛牛去犇犇老师家补课，出门的时候面向北方，但是现在他迷路了。虽然他手里有一张地图，但是他需要知道自己面向哪个方向，请你帮帮他</p>
-<pre><code>console.log(&quot;[牛牛数对结果]一共有&quot;+direction(5,2)+&quot;个&quot;);
+</code></pre><p>2.牛牛去犇犇老师家补课，出门的时候面向北方，但是现在他迷路了。虽然他手里有一张地图，但是他需要知道自己面向哪个方向，请你帮帮他<br>输入描述：</p>
+<p>每个输入包含一个测试用例。</p>
+<p>每个输入包含一个测试用例，每个测试用例的第一行包含一个正整数，表示转的方向的次数N（N&lt;=1000）。</p>
+<p>接下来的一行包含一个长度为N的字符串，由L和R组成，L表示向左转，R表示向右转。</p>
+<p>输出描述：</p>
+<p>输出牛牛最后的面向的方向，N表示北，S表示南，E表示东，W表示西</p>
+<p>   console.log(“【牛牛转向结果】方向是” + direction(2, “LL”)); // 检查结果<br>    function direction(number,action) {<br>        let leftNum=0;//左转次数<br>        let rightNum=0;//右转次数<br>        for(let index=0;index&lt;action.length;index++) {<br>            action[index] == “L” ? leftNum += 1 : rightNum += 1;//取得左转和右转次数<br>        }<br>            console.log(leftNum,rightNum);<br>            let result=leftNum<em>(-1)+rightNum</em>1;//最终转的次数（）左转一次和右转一次会抵消<br>            let directionValue=result%4;</p>
+<pre><code>    switch(directionValue){
+        case 0:
+            return &quot;N&quot;; // 0代表北
+        case 1:
+            return &quot;E&quot;; // 1代表东
+        case -2||2:
+            return &quot;S&quot;; // -2或者2代表南
+        case -1 :
+            return &quot;W&quot;; // -1代表西
+    }
+}
+</code></pre><p>3.牛牛以前在老师那里得到了一个正整数数对(x, y), 牛牛忘记他们具体是多少了。</p>
+<p>但是牛牛记得老师告诉过他x和y均不大于n, 并且x除以y的余数大于等于k。<br>牛牛希望你能帮他计算一共有多少个可能的数对。<br>输入描述：输入包括两个整数，n,k(1 &lt;= n &lt;= 10^5,0 &lt;= k &lt;= n -1)。</p>
+<p>输出描述：对于每个测试用例，输出一个正整数表示可能的数对数量。</p>
+<p>举例：输入：5  2  ；输出： 7。 满足条件的数对有：（2,3）  ；满足条件的数对有（2,3）（2,4）（2,5）（3,4）（3,5）（4,5）（5,3）；</p>
+<pre><code>  console.log(&quot;[牛牛数对结果]一共有&quot;+direction(5,2)+&quot;个&quot;);
 function direction(n,k) {
 let pairNumber=0;
 for(let indexX=1;indexX&lt;=n;indexX++){
@@ -863,31 +1083,7 @@ for(let indexX=1;indexX&lt;=n;indexX++){
        }
    }
 </code></pre><p>   }<br>       return pairNumber;<br>    }</p>
-<p>3.牛牛以前在老师那里得到了一个正整数数对(x, y), 牛牛忘记他们具体是多少了。</p>
-<p>但是牛牛记得老师告诉过他x和y均不大于n, 并且x除以y的余数大于等于k。<br>牛牛希望你能帮他计算一共有多少个可能的数对。</p>
-<pre><code> console.log(&quot;【牛牛转向结果】方向是&quot; + direction(3, &quot;LRR&quot;)); // 检查结果
-function direction(number,action) {
-    let leftNum=0;//左转次数
-    let rightNum=0;//右转次数
-    for(let index=0;index&lt;action.length;index++){
-        action[index]==&quot;L&quot;?leftNum+=1:rightNum+=1;//取得左转和右转次数
-        console.log(leftNum,rightNum);
-        let result=Math.abs(leftNum*(-1)+rightNum*1);//最终转的次数（）左转一次和右转一次会抵消
-        let directionValue=1+result%4;//
-        switch(directionValue){
-            case 1:
-                return &quot;N&quot;; // 1代表北
-            case 2:
-                return &quot;E&quot;; // 2代表东
-            case 3:
-                return &quot;S&quot;; // 3代表南
-            case 4:
-                return &quot;W&quot;; // 4代表西
-        }
-    }
-
-}
-</code></pre><p>4.公司放映系统最近要上线一个『预定随机推荐电影』功能，每天用户通过系统预定名额，由系统每日推荐一部电影，按时推送到用户。现在，在系统已有如下异步方法封装的前提下<br>•    getTodayUsers ( callback ): 获取今日预定的用户id列表，使用如下 <code>getTodyUsers(userIds=&gt;{ console.log(userIds )})</code>, 即回调中拿到用户id列表<br>•    getTodayMovie(callback): 获取今日推荐的电影id, 使用如下 <code>getTodayMovie( movieId=&gt; {console.log(movieId )})</code> ，即回调中拿到今日的电影id<br>•    bookMovieForUsers(userIds, movieId, callback): 使用用户id列表预定某部电影，使用如下bookMovieForUsers([1,2,3], 1000, ()=&gt;{console.log(‘预定成功了’)})<br>请封装一个bookTodayMovieForTodayUser()的方法，它的作用是为今天预定的用户订阅今天系统推荐的电影。它返回一个promise, 这个promise在请求后被resolve. 使用方式如下<br>bookTodayMovieForTodayUser().then( ()=&gt; console.log(‘预定成功’) )<br>注: 简单起见，所有情况都不需要考虑失败情况</p>
+<p>4.公司放映系统最近要上线一个『预定随机推荐电影』功能，每天用户通过系统预定名额，由系统每日推荐一部电影，按时推送到用户。现在，在系统已有如下异步方法封装的前提下<br>•    getTodayUsers ( callback ): 获取今日预定的用户id列表，使用如下 <code>getTodyUsers(userIds=&gt;{ console.log(userIds )})</code>, 即回调中拿到用户id列表<br>•    getTodayMovie(callback): 获取今日推荐的电影id, 使用如下 <code>getTodayMovie( movieId=&gt; {console.log(movieId )})</code> ，即回调中拿到今日的电影id<br>•    bookMovieForUsers(userIds, movieId, callback): 使用用户id列表预定某部电影，使用如下bookMovieForUsers([1,2,3], 1000, ()=&gt;{console.log(‘预定成功了’)})<br>请封装一个bookTodayMovieForTodayUser()的方法，它的作用是为今天预定的用户订阅今天系统推荐的电影。它返回一个promise, 这个promise在请求后被resolve. 使用方式如下<br>bookTodayMovieForTodayUser().then( ()=&gt; console.log(‘预定成功’) )<br>注: 简单起见，所有情况都不需要考虑失败情况</p>
 <pre><code>function getTodyUsers(
     userids =&gt; {
     console.log(uesrIds)
@@ -1157,69 +1353,6 @@ bookMovieForUser(
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2018/05/09/终于解决了更换主题的问题/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-first" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/04/22/first/">my first blog</a>
-    </h1>
-  
-
-        
-        <a href="/2018/04/22/first/" class="archive-article-date">
-  	<time datetime="2018-04-22T10:03:54.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-22</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>hello ,every one,i am coming !</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/04/22/first/">展开全文 >></a>
         </p>
       
 

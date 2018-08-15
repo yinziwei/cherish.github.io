@@ -159,6 +159,222 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-箭头函数" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/07/12/箭头函数/">箭头函数</a>
+    </h1>
+  
+
+        
+        <a href="/2018/07/12/箭头函数/" class="archive-article-date">
+  	<time datetime="2018-07-12T08:43:22.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-12</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>1、函数体内的this对象就是定义时所在的对象，而不是使用时所在的对象<br>2、不可以当作构造函数，也就是不可以使用new命令<br>3、不可以使用arguments对象，该对象在函数体内不存在，可以用rest参数来代替<br>4、不可以使用yield命令，因此箭头函数不能用作generator函数。<br>典型事例：</p>
+<pre><code>function foo(){
+setTimeout(()=&gt;{
+    console.log(&apos;id:&apos;,this.id);
+},100);
+}
+var id=21;
+foo.call({id:42})//id:42
+</code></pre><p>此时setTimeout的参数是一个箭头函数，箭头函数的定义是在foo函数生成中生效的，而它真正执行要等到100ms后，如果时普通函数，执行时this应该执行全局函数window，这时应该输出21，但是箭头函数导致this总是只想函数定义生效时所在的对象，所以输出了42<br>  箭头函数this指向固定化的原因是箭头函数根本就没有自己的this，导致内部的this就是外层代码块的this，正是他没有自己的this，所以他不能用作构造函数。<br>箭头函数中不存在指向外层函数的对应变量：arguments,super,new.target</p>
+<h1 id="嵌套的箭头函数"><a href="#嵌套的箭头函数" class="headerlink" title="嵌套的箭头函数"></a>嵌套的箭头函数</h1><h1 id="绑定this"><a href="#绑定this" class="headerlink" title="绑定this"></a>绑定this</h1><p>函数绑定符： ：<br>冒号左边为一个对象，右边是一个函数，该运算将自动将左边的对象作为上下文环境绑定到右边的函数上<br>     foo:bar//等同于<br>        bar:bind(foo)</p>
+<h1 id="尾调用"><a href="#尾调用" class="headerlink" title="尾调用"></a>尾调用</h1><p>就是指某个函数的最后就是调用另外一个函数</p>
+<h1 id="rest参数"><a href="#rest参数" class="headerlink" title="rest参数"></a>rest参数</h1><p>用于获取函数中的多余参数，rest搭配的一个变量是一个数组，改便改良将多余的参数放入其中。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/07/12/箭头函数/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-对齐方式" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/07/12/对齐方式/">对齐方式</a>
+    </h1>
+  
+
+        
+        <a href="/2018/07/12/对齐方式/" class="archive-article-date">
+  	<time datetime="2018-07-12T03:27:29.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-12</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>#水平居中#<br>1，行内元素水平居中：<br>   1，父元素：text-align:center<br>   2，子元素：display:inline-block<br>2,块状元素居中（定宽）：<br>    1，margin:0 aoto<br>       width:200px<br>2,块状元素居中（不定宽）：<br>  可以直接给不定宽的块级元素设置text-align：center来实现，也可以给父元素加text-align:center 来实现居中效果。<br> 当不定宽块级元素的宽度不要占一行时，可以设置display 为 inline 类型或inline-block（设置为 行内元素 显示或行内块元素）</p>
+<p>#垂直居中#<br>1.首先设定两个条件即父元素是盒子容器且高度已经设定<br>  1，子元素是行内元素，高度是由其内容撑开的，需要通过设定父元素的line-height为其高度来使得子元素垂直居中<br>  2，子元素是块级元素但是子元素高度没有设定，在这种情况下实际上是不知道子元素的高度的，无法通过计算得到padding或margin来调整，但是还是存在一些解法。</p>
+<p>通过给父元素设定display:table-cell;vertical-align:middle来解决<br>  3，子元素是块级元素且高度已经设定，计算子元素的margin-top或margin-bottom，计算方法为父(元素高度-子元素高度)/2</p>
+<p>#水平垂直居中#<br>1，text-align + line-height 实现单行文本水平垂直居中<br>2，   text-align + vertical-align　　在父元素设置text-align和vertical-align，并将父元素设置为table-cell元素，子元素设置为inline-block元素<br>     .若子元素是图像，可不使用table-cell，而是其父元素用行高替代高度，且字体大小设为0。子元素本身设置vertical-align:middle<br>3，使用absolute，利用绝对定位元素的盒模型特性，在偏移属性为确定值的基础上，设置margin:auto</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/07/12/对齐方式/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-float-的特性清除浮动的方法" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/07/12/float-的特性清除浮动的方法/">float 的特性清除浮动的方法</a>
+    </h1>
+  
+
+        
+        <a href="/2018/07/12/float-的特性清除浮动的方法/" class="archive-article-date">
+  	<time datetime="2018-07-12T02:59:10.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-12</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="float设计的初衷"><a href="#float设计的初衷" class="headerlink" title="float设计的初衷"></a>float设计的初衷</h1><p>1，为了实现文字环绕</p>
+<h1 id="float的特性"><a href="#float的特性" class="headerlink" title="float的特性"></a>float的特性</h1><p>1，破坏性：脱离文档，导致其父元素高度坍塌，一切原因都是因为其设计初衷————为了实现文字环绕<br>2，包裹性：最初的div会独占一整行，但是有了float后，只会占内容的宽度，一切原因都是因为其设计初衷————为了实现文字环绕<br>3，清除空格：有了float属性后，两个行内元素之间爱的就会变得很紧凑，没有空格，一切原因都是因为其设计初衷————为了实现文字环绕</p>
+<h1 id="清楚浮动"><a href="#清楚浮动" class="headerlink" title="清楚浮动"></a>清楚浮动</h1><p>1，为父元素添加overflow:hidden　　这样父元素就有高度了 ，父元素的高度便不会被破坏；<br>2，浮动父元素<br>3，clear:both这个东西。通过在所有浮动元素下方添加一个clear:both的元素，可以消除float的破坏性。<br>4.clearfix类：</p>
+<pre><code>.clearfix:after{
+                content:&apos;&apos;;
+                display:table;
+                clear:both;
+}
+exp:
+         &lt;div class=&quot;clearfix&quot;&gt;
+    &lt;img src=&quot;&quot; alt=&quot;&quot; style=&quot;float:left;&quot;&gt;
+    &lt;img src=&quot;&quot; alt=&quot;&quot; style=&quot;float:left;&quot;&gt;
+        &lt;/div&gt;
+</code></pre><h1 id="浮动的应用"><a href="#浮动的应用" class="headerlink" title="浮动的应用"></a>浮动的应用</h1><p>1，设置float属性后，元素实际上会inline-block<br>2，可以去掉排列见的空格</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/07/12/float-的特性清除浮动的方法/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-简易留言板调试中出现得bug" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1011,329 +1227,6 @@ console.log(ans(&apos;1 2 3&apos;))
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2018/06/04/js的优化和web-worker和cookies的区别/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-网易前端实习生笔试题" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/06/04/网易前端实习生笔试题/">网易前端实习生笔试题</a>
-    </h1>
-  
-
-        
-        <a href="/2018/06/04/网易前端实习生笔试题/" class="archive-article-date">
-  	<time datetime="2018-06-04T08:27:29.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-04</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>###http协议<br>HTTP 304 未改变说明无需再次传输请求的内容,也就是说可以使用缓存的内容<br>301永久重定向、302暂时重定向<br>http请求字段range:<br>    格式： Range: bytes=start-end<br>    请求资源的部分内容（不包括响应头的大小），单位是byte，即字节，从0开始.<br>    如果服务器能够正常响应的话，服务器会返回 206 Partial Content 的状态码及说明.</p>
-<pre><code>如果不能处理这种Range的话，就会返回整个资源以及响应状态码为 200 OK .
-</code></pre><p>http的header分割符：\r\n</p>
-<p>###UDP通信</p>
-<ol>
-<li>发送数据之前不需要建立连接</li>
-<li>没有拥塞控制</li>
-<li>传输数据的时候对报文长度有要求</li>
-<li>一般用在数据传输要求不高的场合<br>###HTTP1.0和HTTP1.1</li>
-<li>HTTP1.0只能短连接，而HTTP1.1一般长连接，可以用于短连接</li>
-<li>HTTP1.0通信的时候会占用大量内存，而HTTP1.1可以避免这样的情况</li>
-<li>状态码100只适用于HTTP1.1版本</li>
-<li>HTTP1.1 在 Request 消息头里多了一个 Host 域,HTTP1.0 则没有这个域<br>###进程和线程</li>
-<li>进程是系统进行资源分配和调度的基本单位，而线程是CPU调度和分配的基本单位</li>
-<li>一个线程可以创建和撤销另一个线程</li>
-<li>一个进程中的多个线程共享资源<br>4.线程自己拥有：状态和计数器<br>同一个进程内的线程共享这个进程的资源<br>所有线程是没有自己的系统资源的，多个线程是交替使用其进程的资源</li>
-</ol>
-<p>###a:link,a:visited,a:hover,a:active 分别是什么意思?</p>
-<ol>
-<li>link:连接平常的状态</li>
-<li>visited:连接被访问过之后</li>
-<li>hover:鼠标放到连接上的时候</li>
-<li>active:连接被按下的时候</li>
-</ol>
-<p>正确顺序：“爱恨原则”（LoVe/HAte），即四种伪类的首字母:LVHA。再重复一遍正确的顺序：a:link、a:visited、a:hover、a:active .</p>
-<p>因为当鼠标经过未访问的链接，会同时拥有a:link、a:hover两种属性，a:link离它最近，所以它优先满足a:link，而放弃a:hover的重复定义。当鼠标经过已经访问过的链接，会同时拥有a:visited、a:hover两种属性，a:visited离它最近，所以它优先满足a:visited，而放弃a:hover的重复定义。究其原因，是css的就近原则“惹的祸”。</p>
-<p>###CSS2中轮廓outline</p>
-<ol>
-<li>轮廓是绘制于元素周围的一条线</li>
-<li>轮廓位于边框边缘的外围，可起到突出元素的作用</li>
-<li>CSS outline 属性可以设置元素轮廓的颜色和宽度。<br>###absolute和relative的定义，都是基于非static的父元素的<br>###二叉树查找，希尔排序，快速排序，前序遍历<h2 id="编程题"><a href="#编程题" class="headerlink" title="编程题"></a>编程题</h2></li>
-<li>小Q得到一个神奇的数列: 1, 12, 123,…12345678910,1234567891011…。</li>
-</ol>
-<p>并且小Q对于能否被3整除这个性质很感兴趣。</p>
-<p>小Q现在希望你能帮他计算一下从数列的第l个到第r个(包含端点)有多少个数可以被3整除。</p>
-<pre><code>console.log(&quot;小Q数列得结果]一共有&quot;+three(2,5)+&quot;个&quot;)
-function three(num1,num2){
-    let tmpFirst=&quot;&quot;;
-    let tmpSecond=&quot;&quot;;
-    let threeNumber=0;
-    for(let index=1;index&lt;=num1;index++) {
-        tmpFirst += index.toString();
-    }
-    console.log(&quot;小Q数列--  &quot; + &quot;开端数字是&quot; + tmpFirst); // 得到开端数字
-    for (let index = 1; index &lt;= num2; index++) {
-        tmpSecond += index.toString();
-        if(tmpSecond&gt;=tmpFirst&amp;&amp;tmpSecond%3==0){
-            threeNumber+=1;
-            console.log(&quot;小Q数列--数字&quot;+tmpSecond+&quot;可以整除3&quot;);
-        }
-    }
-    return threeNumber;
-}
-</code></pre><p>2.牛牛去犇犇老师家补课，出门的时候面向北方，但是现在他迷路了。虽然他手里有一张地图，但是他需要知道自己面向哪个方向，请你帮帮他<br>输入描述：</p>
-<p>每个输入包含一个测试用例。</p>
-<p>每个输入包含一个测试用例，每个测试用例的第一行包含一个正整数，表示转的方向的次数N（N&lt;=1000）。</p>
-<p>接下来的一行包含一个长度为N的字符串，由L和R组成，L表示向左转，R表示向右转。</p>
-<p>输出描述：</p>
-<p>输出牛牛最后的面向的方向，N表示北，S表示南，E表示东，W表示西</p>
-<p>   console.log(“【牛牛转向结果】方向是” + direction(2, “LL”)); // 检查结果<br>    function direction(number,action) {<br>        let leftNum=0;//左转次数<br>        let rightNum=0;//右转次数<br>        for(let index=0;index&lt;action.length;index++) {<br>            action[index] == “L” ? leftNum += 1 : rightNum += 1;//取得左转和右转次数<br>        }<br>            console.log(leftNum,rightNum);<br>            let result=leftNum<em>(-1)+rightNum</em>1;//最终转的次数（）左转一次和右转一次会抵消<br>            let directionValue=result%4;</p>
-<pre><code>    switch(directionValue){
-        case 0:
-            return &quot;N&quot;; // 0代表北
-        case 1:
-            return &quot;E&quot;; // 1代表东
-        case -2||2:
-            return &quot;S&quot;; // -2或者2代表南
-        case -1 :
-            return &quot;W&quot;; // -1代表西
-    }
-}
-</code></pre><p>3.牛牛以前在老师那里得到了一个正整数数对(x, y), 牛牛忘记他们具体是多少了。</p>
-<p>但是牛牛记得老师告诉过他x和y均不大于n, 并且x除以y的余数大于等于k。<br>牛牛希望你能帮他计算一共有多少个可能的数对。<br>输入描述：输入包括两个整数，n,k(1 &lt;= n &lt;= 10^5,0 &lt;= k &lt;= n -1)。</p>
-<p>输出描述：对于每个测试用例，输出一个正整数表示可能的数对数量。</p>
-<p>举例：输入：5  2  ；输出： 7。 满足条件的数对有：（2,3）  ；满足条件的数对有（2,3）（2,4）（2,5）（3,4）（3,5）（4,5）（5,3）；</p>
-<pre><code>  console.log(&quot;[牛牛数对结果]一共有&quot;+direction(5,2)+&quot;个&quot;);
-function direction(n,k) {
-let pairNumber=0;
-for(let indexX=1;indexX&lt;=n;indexX++){
-   for(let indexY=1;indexY&lt;=n;indexY++){
-       if(indexX%indexY&gt;=k){
-           pairNumber+=1;
-           console.log(&quot;牛牛数对--  &quot; + &quot;数对 (&quot; + indexX + &quot;,&quot; + indexY + &quot;) 符合&quot;);
-       }
-   }
-</code></pre><p>   }<br>       return pairNumber;<br>    }</p>
-<p>4.公司放映系统最近要上线一个『预定随机推荐电影』功能，每天用户通过系统预定名额，由系统每日推荐一部电影，按时推送到用户。现在，在系统已有如下异步方法封装的前提下<br>•    getTodayUsers ( callback ): 获取今日预定的用户id列表，使用如下 <code>getTodyUsers(userIds=&gt;{ console.log(userIds )})</code>, 即回调中拿到用户id列表<br>•    getTodayMovie(callback): 获取今日推荐的电影id, 使用如下 <code>getTodayMovie( movieId=&gt; {console.log(movieId )})</code> ，即回调中拿到今日的电影id<br>•    bookMovieForUsers(userIds, movieId, callback): 使用用户id列表预定某部电影，使用如下bookMovieForUsers([1,2,3], 1000, ()=&gt;{console.log(‘预定成功了’)})<br>请封装一个bookTodayMovieForTodayUser()的方法，它的作用是为今天预定的用户订阅今天系统推荐的电影。它返回一个promise, 这个promise在请求后被resolve. 使用方式如下<br>bookTodayMovieForTodayUser().then( ()=&gt; console.log(‘预定成功’) )<br>注: 简单起见，所有情况都不需要考虑失败情况</p>
-<pre><code>function getTodyUsers(
-    userids =&gt; {
-    console.log(uesrIds)
-}
-
-);//获取今天预定的用户
-function getTodyMovie(
-    movieId =&gt;{
-    console.log(movieId)
-}
-
-);//获得今日推荐的电影
-function bookMovieForUser(
-    [1,2,3],1000,() =&gt; {
-    console.log(&apos;预定成功&apos;)
-}
-
-);//使用用户列表预定推荐电影
-function bookTodayMovieForTodayUser(
-    let users =getTodayUsers();
-let movie =getTodayMovie();
-bookMovieForUser(
-    users,movie,() =&gt;{(console.log(&apos;预定成功&apos;))};
-)
-
-);
-</code></pre>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/06/04/网易前端实习生笔试题/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-仿网易云第四章推荐部分笔记" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/05/27/仿网易云第四章推荐部分笔记/">仿网易云第四章推荐部分笔记</a>
-    </h1>
-  
-
-        
-        <a href="/2018/05/27/仿网易云第四章推荐部分笔记/" class="archive-article-date">
-  	<time datetime="2018-05-27T13:04:07.508Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-27</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="vuex"><a href="#vuex" class="headerlink" title="vuex"></a>vuex</h1><ol>
-<li>访问状态对象：mapStates,给state状态的值起个别名</li>
-<li>mutation    激发状态   mapMutations，是同步的</li>
-<li>getter动态的计算数值，mapGetters</li>
-<li>actions是异步的，参数context代表了整个store对象  mapActions<br>在vue中官方建议不要用箭头函数<br>计算属性computed只可以出现一次，</li>
-</ol>
-<hr>
-<p>build   指定了文件的路径<br>dev  设置项目的端口和</p>
-<hr>
-<h1 id="jsonp-的原理"><a href="#jsonp-的原理" class="headerlink" title="jsonp 的原理"></a>jsonp 的原理</h1><hr>
-<p>Object.assign()方法：浅拷贝、对象属性的合并<br>ep1，var nObj = Object.assign({},obj,obj1);//花括号叫目标对象，后面的obj、obj1是源对象。对象合并是指：将源对象里面的属性添加到目标对象中去，若两者的属性名有冲突，后面的将会覆盖前面的<br>prop属性：组件实例的作用域，这意味着不能在子组件的模板内直接引用父组件的数据，要让子组件引用父组件的数据，就需要通过子组件的props选项，它是单项绑定的，前绑定是动态的<br>better-scroll:使用原生的js做的框架，用的时候一定要进行渲染或者高度或者宽度要计算准确<br>浏览器的刷新通常是17ms<br>axio，可以在抓取数据的时候避过host和referr<br>的限制来获取数据，即后端接口代理<br>scroll需要注意获取的时间点，渲染的时间点，不然有可能划不动<br>懒加载lazyload，先只加载能看到的部分，随着滑动，然后再加载剩余部分</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/05/27/仿网易云第四章推荐部分笔记/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-仿网易云项目工程中遇到的问题" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/05/15/仿网易云项目工程中遇到的问题/">仿网易云项目工程中遇到为问题</a>
-    </h1>
-  
-
-        
-        <a href="/2018/05/15/仿网易云项目工程中遇到的问题/" class="archive-article-date">
-  	<time datetime="2018-05-15T15:29:22.072Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-15</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="vue实战-仿网易云音乐"><a href="#vue实战-仿网易云音乐" class="headerlink" title="vue实战  仿网易云音乐"></a>vue实战  仿网易云音乐</h1><h1 id="课程将有的收获"><a href="#课程将有的收获" class="headerlink" title="课程将有的收获"></a>课程将有的收获</h1><ol>
-<li>了解中级复杂规模得应用开发</li>
-<li>学会组件化，模块化</li>
-<li>原生App交互原理</li>
-<li>掌握vue.js得高级用法</li>
-</ol>
-<h2 id="第二章"><a href="#第二章" class="headerlink" title="第二章"></a>第二章</h2><h3 id="需求分析"><a href="#需求分析" class="headerlink" title="需求分析"></a>需求分析</h3><h3 id="脚手架不是一定要的，但是是比较推荐的，这样webpack的配置就方便了很多"><a href="#脚手架不是一定要的，但是是比较推荐的，这样webpack的配置就方便了很多" class="headerlink" title="脚手架不是一定要的，但是是比较推荐的，这样webpack的配置就方便了很多"></a>脚手架不是一定要的，但是是比较推荐的，这样webpack的配置就方便了很多</h3><ol>
-<li>babel-runtime:会对es6的语法做一些转义</li>
-<li>fastclick：解决移动端300ms延迟的问题</li>
-<li>bable-polyfill 对es6进行一些转移</li>
-<li>出现了一个问题，stylus安装成功了，单个文件没问题，但是在vue文件中总是识别不了css样式，样式总是报红，在网上搜寻解决解决办法，加了stylus support插件也不行，所以只有ige办法，就是将webstrom更新到最新的版本</li>
-<li>在webpack.base.config中加了两个东西，，明天再改正</li>
-</ol>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/05/15/仿网易云项目工程中遇到的问题/">展开全文 >></a>
         </p>
       
 

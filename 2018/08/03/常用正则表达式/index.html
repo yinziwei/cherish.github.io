@@ -6,18 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives | cherish</title>
+  <title>常用正则表达式 | cherish</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="努力的人最美">
-<meta property="og:type" content="website">
-<meta property="og:title" content="cherish">
-<meta property="og:url" content="http://yoursite.com/archives/page/3/index.html">
+  <meta name="description" content="常用正则表达式 匹配中文字符  var pattern=/[\u4e00-\u9fa5]/  匹配国内电话号码  var pattern=/\d{3}-\d{8}|\d{4}-\{7,8}/  匹配电子邮件地址  var pattern=/[\w!#$%&amp;amp;&amp;apos;*+/=?^_`{|}~-]+(?:\.[\w!#$%&amp;amp;&amp;apos;*+/=?^_`{|}~-]+)*@(?:[\w">
+<meta property="og:type" content="article">
+<meta property="og:title" content="常用正则表达式">
+<meta property="og:url" content="http://yoursite.com/2018/08/03/常用正则表达式/index.html">
 <meta property="og:site_name" content="cherish">
-<meta property="og:description" content="努力的人最美">
+<meta property="og:description" content="常用正则表达式 匹配中文字符  var pattern=/[\u4e00-\u9fa5]/  匹配国内电话号码  var pattern=/\d{3}-\d{8}|\d{4}-\{7,8}/  匹配电子邮件地址  var pattern=/[\w!#$%&amp;amp;&amp;apos;*+/=?^_`{|}~-]+(?:\.[\w!#$%&amp;amp;&amp;apos;*+/=?^_`{|}~-]+)*@(?:[\w">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-08-15T03:40:05.948Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="cherish">
-<meta name="twitter:description" content="努力的人最美">
+<meta name="twitter:title" content="常用正则表达式">
+<meta name="twitter:description" content="常用正则表达式 匹配中文字符  var pattern=/[\u4e00-\u9fa5]/  匹配国内电话号码  var pattern=/\d{3}-\d{8}|\d{4}-\{7,8}/  匹配电子邮件地址  var pattern=/[\w!#$%&amp;amp;&amp;apos;*+/=?^_`{|}~-]+(?:\.[\w!#$%&amp;amp;&amp;apos;*+/=?^_`{|}~-]+)*@(?:[\w">
   
     <link rel="alternative" href="/atom.xml" title="cherish" type="application/atom+xml">
   
@@ -157,198 +158,185 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-常用正则表达式" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      常用正则表达式
+    </h1>
+  
+
+        
+        <a href="/2018/08/03/常用正则表达式/" class="archive-article-date">
+  	<time datetime="2018-08-03T02:48:58.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-03</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="常用正则表达式"><a href="#常用正则表达式" class="headerlink" title="常用正则表达式"></a>常用正则表达式</h1><ol>
+<li>匹配中文字符</li>
+</ol>
+<pre><code>var pattern=/[\u4e00-\u9fa5]/
+</code></pre><ol start="2">
+<li>匹配国内电话号码</li>
+</ol>
+<pre><code>var pattern=/\d{3}-\d{8}|\d{4}-\{7,8}/
+</code></pre><ol start="3">
+<li>匹配电子邮件地址</li>
+</ol>
+<pre><code>var pattern=/[\w!#$%&amp;&apos;*+/=?^_`{|}~-]+(?:\.[\w!#$%&amp;&apos;*+/=?^_`{|}~-]+)*@(?:[\w](?:[\w-]*[\w])?\.)+[\w](?:[\w-]*[\w])?/
+</code></pre><ol start="4">
+<li><p>匹配18位身份证号码</p>
+<pre><code>var pattern=/^(\d{6})(\d{4})(\d{2})(\d{2})(\d{3})([0-9]|X)$/
+</code></pre></li>
+<li><p>匹配（年-月-日）格式日期</p>
+<pre><code>var pattern=/([0-9]{3}[1-9]|[0-9]{2}[1-9][0-9]{1}|[0-9]{1}[1-9][0-9]{2}|[1-9][0-9]{3})-(((0[13578]|1[02])-(0[1-9]|[12][0-9]|3[01]))|((0[469]|11)-(0[1-9]|[12][0-9]|30))|(02-(0[1-9]|[1][0-9]|2[0-8])))/
+</code></pre></li>
+</ol>
+<p>有关正则表达式的相关内容参考 <a href="https://www.liaoxuefeng.com/wiki/001374738125095c955c1e6d8bb493182103fac9270762a000/001386832260566c26442c671fa489ebc6fe85badda25cd000" target="_blank" rel="noopener">廖雪峰老师的官方网站</a></p>
+<p><a href="https://www.jb51.net/tools/zhengze.html#grouping" target="_blank" rel="noopener">还有一个正则表达详细解说的网站</a></p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/06/04/网易前端实习生笔试题/" class="archive-article-date">
-  	<time datetime="2018-06-04T08:27:29.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-04</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/06/04/网易前端实习生笔试题/">网易前端实习生笔试题</a>
-    </h1>
-  
+      
 
-        <div class="article-info info-on-right">
-          
-          
+      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/08/03/常用正则表达式/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/05/27/仿网易云第四章推荐部分笔记/" class="archive-article-date">
-  	<time datetime="2018-05-27T13:04:07.508Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-27</time>
-</a>
+<nav id="article-nav">
+  
+    <a href="/2018/08/03/javascript事件流，事件代理，target和currentTarget/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          javascript事件流，事件代理，4种事件处理程序的形式
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018/07/31/观看FungLeo-s-Blog有感/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">观看FungLeo&#39;s Blog有感</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/05/27/仿网易云第四章推荐部分笔记/">仿网易云第四章推荐部分笔记</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/05/15/仿网易云项目工程中遇到的问题/" class="archive-article-date">
-  	<time datetime="2018-05-15T15:29:22.072Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-15</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/05/15/仿网易云项目工程中遇到的问题/">仿网易云项目工程中遇到为问题</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/05/09/终于解决了更换主题的问题/" class="archive-article-date">
-  	<time datetime="2018-05-09T12:08:15.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-09</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/05/09/终于解决了更换主题的问题/">终于解决了更换主题的问题</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">hexo  主题</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/04/22/first/" class="archive-article-date">
-  	<time datetime="2018-04-22T10:03:54.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-22</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/04/22/first/">my first blog</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/04/22/hello-world/" class="archive-article-date">
-  	<time datetime="2018-04-22T09:00:59.624Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-22</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/04/22/hello-world/">Hello World</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/archives/page/2/">&laquo; Prev</a><a class="page-number" href="/archives/">1</a><a class="page-number" href="/archives/page/2/">2</a><span class="page-number current">3</span>
-    </nav>
   
 
 
@@ -372,8 +360,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

@@ -306,6 +306,264 @@ function mycd(data) {
 
 
   
+    <article id="post-创建对象的七种模式" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/08/09/创建对象的七种模式/">创建对象的七种模式</a>
+    </h1>
+  
+
+        
+        <a href="/2018/08/09/创建对象的七种模式/" class="archive-article-date">
+  	<time datetime="2018-08-09T01:17:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-09</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="创建对象的七种模式"><a href="#创建对象的七种模式" class="headerlink" title="创建对象的七种模式"></a>创建对象的七种模式</h1><p>一、工厂模式<br>原理：用函数来封装一特定接口创建对象的细节</p>
+<pre><code>function createPerson(name,age,job) {
+        var o=new Object()
+        o.name=name
+        o.age=age
+        o.job=job
+        o.sayName=function () {
+            alert(this.name)
+
+        }
+        return o
+
+    }
+    var person1=createPerson(&apos;cherish&apos;,18,&apos;web&apos;)
+    var person2=createPerson(&apos;cherish1&apos;,18,&apos;web1&apos;)
+</code></pre><p>特性：1.虽然解决了创建多个相似对象的问题，但是没有解决对象识别的问题（即怎样知道一个对象的类型，因为此时都返回的是object对象）</p>
+<p>二、构造函数模式</p>
+<pre><code>function Person(name,age,job) {
+        this.name=name
+        this.age=age
+        this.job=job
+        this.sayName=function () {
+            alert(this.name)
+        }
+        var person1=new Person(&apos;cherish&apos;,18,&apos;web&apos;)
+        var person2=new Person(&apos;cherish1&apos;,18,&apos;web1&apos;)
+    }
+</code></pre><p>与工厂模式不同之处：</p>
+<ol>
+<li>没有显性的创建对象</li>
+<li>直接将属性和方法赋给了this对象</li>
+<li>没有return返回语句</li>
+<li>且函数名首字母大写</li>
+<li>创捷对象时要用new来创建，不然和普通的函数一样了<br>特性：<br>以这种方式创建创建对象会有4个过程</li>
+<li>创建一个对象</li>
+<li>将构造函数的作用域赋给新对象（因此this就只想了这个新对象）</li>
+<li>执行构造函数中的代码</li>
+<li>返回新对象</li>
+</ol>
+<p>所以person1和person2是两个不同的对象<br>此时有</p>
+<pre><code>person1.constructor===Person //true
+person2.constructor===Person //true
+person1 instanceof Person //true
+person1 instanceof Object //true
+</code></pre><p>这就意味着将来将它的实例标志为了一个特定类型，这就是构造模式胜于工厂模式的地方</p>
+<p>拓展：</p>
+<ol>
+<li>构造函数当作普通函数<br>构造函数与其他函数的唯一区别就是调用他们的方式不同，任何函数，只要是通过new调用的，就可以作为构造函数使用</li>
+</ol>
+<p>构造函数的缺点：：每个方法都要在每个实例上执行一遍，，且不同实例上的同名函数是不等的</p>
+<pre><code>person1.sayName==person2.sayName//false
+</code></pre><p>三、原型模式</p>
+<p><strong>我们创建的每个函数都有哟个prototype（原型）属性，这个属性就是一个指针，指向一个对象，而这个对象的用途是包含可以由特定类型的所有实例共享的属性和方法。即prototype就是通过调用构造函数而创建的那个对象实例的原型对象，使用原型对象的好处就是所用的对象实例都可以共享它包含的属性和方法</strong></p>
+<pre><code> function Person() {
+     Person.prototype.name=&apos;cherish&apos;
+     Person.prototype.age=18
+     Person.prototype.job=&apos;web&apos;
+     Person.prototype.sayName=function () {
+         alert(this.name)
+     }
+ }
+ var person1=new Person()
+ person1.sayName()//cherish
+ var person2=new Person()
+ person2.sayName()//cherish
+ person1.name=&apos;Better&apos;
+alert(person1.name)//Better
+ alert(person2.name)//cherish
+</code></pre><p>特性：</p>
+<ol>
+<li>当为对象添加一个属性时，这个属性就会屏蔽原型对象中保存的那个同名对象，换句话说，添加的那个属性只会阻止我们访问原型对象中的那个属性，但不会修改那个属性，将这个值位置为null，仍然会屏蔽，但是用delete就会让我们再一次看到原型中的属性了</li>
+<li>有一个方法可以检测有一个属性是否在实例中还是在原型中，hasOwnProperty(),在实例中返回 true，在原型中返回false</li>
+<li><p>In操作符：用两种使用方法</p>
+<pre><code>      function Person() {
+     Person.prototype.name=&apos;cherish&apos;
+     Person.prototype.age=18
+     Person.prototype.job=&apos;web&apos;
+     Person.prototype.sayName=function () {
+         alert(this.name)
+     }
+ }
+ var person1=new Person()
+ person1.sayName()//cherish
+ var person2=new Person()
+ person2.sayName()//cherish
+ person1.name=&apos;Better&apos;
+alert(person1.name)//Better
+ alert(person2.name)//cherish
+  alert(&apos;name&apos; in person1)//true
+ alert(&apos;name&apos; in person2)//true
+</code></pre><p>不管该属性是否在实例中还是在原型对象中，只有有这个属性就返回true</p>
+</li>
+</ol>
+<p>则有个方法可以判断原型对象是在原型对象中 </p>
+<pre><code>function hasPrototypeProperty(object,name) {
+       return !object.hasOwnProperty(name) &amp;&amp; (name in object)
+
+   }
+</code></pre><p>4.跟简单的原型语法</p>
+<pre><code>function Person() {
+  }
+  Person.prototype={
+      constructor:Person,//为了让constructor指向Person
+      name:&apos;cherish&apos;,
+      age:18,
+      job:&apos;web&apos;,
+      sayName:function () {
+          alert(this.name)
+      }
+  }
+</code></pre><ol start="5">
+<li><p>原型的动态性<br>我们对原型对象所做的任何修改都能立刻从实例中反映出来，即使先创建了实例后修改原型页照样如此（<strong>原因为实例和原型的松散链接关系，实例原型之间的连接是一个指针而不是一个副本</strong>）<br>但是，当重写整个原型对象的时候，这种连接会断掉（<strong>实例中的指针仅指向原型，不指向构造函数</strong>）</p>
+</li>
+<li><p>原生对象的原型<br>原生模式的重要i选哪个不仅体现在创建自定义类型方面，原生的引用和类型，都是采用这种模式的，如原生引用类型（Object,Array,String）,所以可以在Array.prototype上找到sort方法，并且可以在其上添加新的方法，</p>
+</li>
+<li>原生对象也有问题<br>原生模式省略了为构造函数初始话参数这一环节，则默认情况下所以实例都有相同的属性值<br><strong>  最大的问题是，对于基本属性的值，还可以屏蔽掉原型的对应属性，但是对于包含引用类型的属性，则在实例上对引用类型的操作哦就会影响原型上的数据变化，到时其他实例的该属性也变化了</strong>  如Array的push操作</li>
+</ol>
+<p>解决方法是每个实例要用属于自己的全部属性，当当当，就出现了</p>
+<p>四、组合使用构造函数和原型模式<br>   构造函数用于定义实例属性，原型模式用于定义方法和共享的属性，这种模式还支持想构造函数传递参数</p>
+<pre><code>function Person(name,age,job) {
+        this.name=name
+        this.age=age
+        this.job=job
+        this.friends=[&apos;better&apos;,&apos;cherish&apos;]
+
+    }
+    Person.prototype={
+        constructor:Person,
+        sayName:function () {
+            alert(this.name)
+        }
+    }
+    var person1=new Person(&apos;cherish&apos;,18,&apos;web&apos;)
+    var person2=new Person(&apos;cherish1&apos;,18,&apos;web1&apos;)
+    person1.friends.push(&apos;love&apos;)
+    alert(person1.friends)//&apos;better&apos;,&apos;cherish&apos;,&apos;love&apos;
+    alert(person2.friends)//&apos;better&apos;,&apos;cherish&apos;
+    alert(person1.sayName==person2.sayName)//true
+</code></pre><p>五、动态原型模式</p>
+<p>因为独立的构造函数和原型，一般其他的编程人员会很困惑，于是有了动态原型模式：<strong>将所有的信息封装到构造函数中，而通过整个构造函数中初始化原型，有保持了同时使用构造函数和原型的优点</strong></p>
+<pre><code>function Person(name,age,job) {
+        //属性
+        this.name=name
+        this.age=age
+        this.job=job
+        //方法
+       * if(typeof this.sayName !==&apos;function&apos;){
+            Person.prototype.sayName=function () {
+                alert(this.name)
+
+            }
+        }*
+
+    }
+
+    var person1=new Person(&apos;cherish&apos;,18,&apos;web&apos;)
+    alert(person1.sayName())
+</code></pre><p>六、寄生构造函数</p>
+<p>如果前面集中模式都不适用，则可使用寄生构造函数模式，思想：创建一个函数，该函数的作用仅仅是封装船舰对象的代码，然后返回新创建的对象</p>
+<pre><code>function Person(name,age,job) {
+       var o=new Object()
+       o.name=name
+       o.age=age
+       o.job=job
+       o.sayName=function () {
+           alert(this.name)
+
+       }
+       return o
+
+   }
+   var person1=new Person(&apos;cherish&apos;,18,&apos;web&apos;)
+   person1.sayName()//cherish
+</code></pre><p>形式基本上和工厂模式一样，但是调用的时候用了new操作符，构造函数在没有返回值是，默认会返回新对象的实例，但如果有了return语句，则会重写返回值</p>
+<p>七、稳妥的构造函数模式</p>
+<p>稳妥的构造函数模式与寄生构造函数模式相似，有两点不一样：</p>
+<ol>
+<li>创建新对象的实例放啊发不引用this</li>
+<li>不适用new操作符调用构造函数</li>
+</ol>
+<pre><code>function Person(name,age,job) {
+       var o=new Object()
+       //在这里定义私有变量和函数
+       //添加方法
+       o.sayName=function () {
+           alert(name)
+
+       }
+       //返回会对象
+       return o
+
+   }
+   //除了使用sayName方法外，没有其他放啊发可以访问name的值，这就是稳妥
+   var person1=Person(&apos;cherish&apos;,18,&apos;web&apos;)
+   person1.sayName()//cherish
+</code></pre><p>寄生构造函数和稳妥的构造函数模式共有特性<br>使用这两种模式创捷的对象与构造函数没有什么关系，所以instanceof对这种对象没有意义</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/08/09/创建对象的七种模式/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-js深度拷贝和浅度拷贝" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1430,73 +1688,6 @@ function rend( times){
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2018/07/22/百度前端第二次笔试题/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-百度2018校招第一场" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/07/14/百度2018校招第一场/">百度2018校招第一场</a>
-    </h1>
-  
-
-        
-        <a href="/2018/07/14/百度2018校招第一场/" class="archive-article-date">
-  	<time datetime="2018-07-14T02:57:29.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-14</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>1，如果想在bash中，把标准输入流重定向到标准错误输出流,应该加下面那条命令?<br>输入流0 标准输出1 标准错误输出2  linux命令知识<br>3，p:nth-child(2) { color: red; }<br>p:nth-of-type(2) { color: red; }</p>
-<p>p:nth-child(2)：1，这是个段落元素<br>                2， 这是父标签的第二个孩子元素<br>p:nth-of-type(2)：1，选择父标签的第二个段落子元素</p>
-<p>4，移动端前端开发与PC端比有哪些不同？<br>（1）浏览器兼容、手机端兼容及一些常见的兼容问题； 30%<br>（2）Js事件处理，click事件、Touch事件处理； 30%<br>（3）布局方面; 30%<br>（4）开发调试; 10%<br>（5）其它一些开发技巧。<br>详细说明：1、pc考虑的是浏览器的兼容性，移动端考虑的是手机的兼容性（手机的分辨率）<br>         2、在事件的处理上，移动端更多的是触屏事件 ，还有移动端弹出的手机键盘的处理<br>         3、在布局上，移动端一般是要做到布局自适应<br>          4、在动画处理上，pc端要考虑ie的兼容性，在手机端，要做动画特效的话，优先使用css3，简单，效率高<br>        4，一般的pc端用jquery，移动端用zepto（内存较小）<br>       5，性能优化，包括首屏的打开速度、用户响应延迟、渲染性能、动画帧率等在手机上都需要特别注意。</p>
-<p>5，认识meta<br>meta，即meta-information，可以提供有关页面的元信息，比如针对搜索引擎和更新频度的描述和关键词。</p>
-<p><meta>永远位于head元素内部，不包含任何内容，并且元数据总是以名称/值的形式被成对传递的。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/07/14/百度2018校招第一场/">展开全文 >></a>
         </p>
       
 

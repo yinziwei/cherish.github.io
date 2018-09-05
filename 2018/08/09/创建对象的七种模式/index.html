@@ -15,7 +15,7 @@
 <meta property="og:site_name" content="cherish">
 <meta property="og:description" content="创建对象的七种模式一、工厂模式原理：用函数来封装一特定接口创建对象的细节 function createPerson(name,age,job) {         var o=new Object()         o.name=name         o.age=age         o.job=job         o.sayName=function () {">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-08-16T03:10:35.410Z">
+<meta property="og:updated_time" content="2018-08-16T06:39:34.745Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="创建对象的七种模式">
 <meta name="twitter:description" content="创建对象的七种模式一、工厂模式原理：用函数来封装一特定接口创建对象的细节 function createPerson(name,age,job) {         var o=new Object()         o.name=name         o.age=age         o.job=job         o.sayName=function () {">
@@ -342,10 +342,10 @@ alert(person1.name)//Better
        o.name=name
        o.age=age
        o.job=job
-       o.sayName=function () {
+      * o.sayName=function () {
            alert(this.name)
 
-       }
+       }*
        return o
 
    }
@@ -361,11 +361,11 @@ alert(person1.name)//Better
 <pre><code>function Person(name,age,job) {
        var o=new Object()
        //在这里定义私有变量和函数
-       //添加方法
+      * //添加方法
        o.sayName=function () {
            alert(name)
 
-       }
+       }*
        //返回会对象
        return o
 
